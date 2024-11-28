@@ -18,16 +18,22 @@ echo Retrieving PowerScript running logs if there is any ...
 scp -P $EHLP_SSHPORT $EHLP_USER@$EHLP_SERVER:$EHLP_CACHE/*.log $RTDRPATH/Data/log
 
 
-chmod -R 744 $RTDRPATH/Data/EHLPDOC${DAY3TAG} 
-chmod -R 744 $RTDRPATH/Data/EHLPDCM${DAY3TAG} 
-rm -rf $RTDRPATH/Data/EHLPDOC${DAY3TAG} 
-rm -rf $RTDRPATH/Data/EHLPDCM${DAY3TAG}
+EHLPDOC=${RTDRPATH}/Data/EHLPDOC${DAY3TAG}
+EHLPDCM=${RTDRPATH}/Data/EHLPDCM${DAY3TAG}
+if [ -d ${EHLPDOC} ]; then
+    chmod -R 744 ${EHLPDOC}
+    rm -rf ${EHLPDOC} 
+fi
+if [ -d ${EHLPDCM} ]; then
+    chmod -R 744 ${EHLPDCM}
+    rm -rf ${EHLPDCM}
+fi
 
 echo $DATESTAMP $TIMESTAMP > $RTDRTMP/unzip.log
 echo Unzipping documents.zip ...
-unzip -o $RTDRPATH/tmp/documents.zip -d $RTDRPATH/Data/EHLPDOC${DAY3TAG}/ >> $RTDRTMP/unzip.log 2>&1
+unzip -o $RTDRPATH/tmp/documents.zip -d ${EHLPDOC}/ >> $RTDRTMP/unzip.log 2>&1
 echo Unzipping dicom.zip ...
-unzip -o $RTDRPATH/tmp/dicom.zip     -d $RTDRPATH/Data/EHLPDCM${DAY3TAG}/ >> $RTDRTMP/unzip.log 2>&1
+unzip -o $RTDRPATH/tmp/dicom.zip     -d ${EHLPDCM}/ >> $RTDRTMP/unzip.log 2>&1
 
 echo
 echo INFO_TIME: `date '+%Y-%m-%d %H:%M:%S'`  Files from EHELPER Received and Unzipped!
