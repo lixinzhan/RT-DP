@@ -17,8 +17,10 @@ echo >> ${RTDRTMP}/email.txt
 cd ${RTDRARXIV} && ls -lh | awk '{print $5, "\t", $9}' | grep $(hostname)-${DATESTAMP} >> ${RTDRTMP}/email.txt
 echo >> ${RTDRTMP}/email.txt
 echo "** If no file listed or file sizes are not reasonable, please check your RT-DP system !!!" >> ${RTDRTMP}/email.txt
-echo "** Files can be accessed on ${EHLP_SERVER} in folder ${EHLP_DATA}" >> ${RTDRTMP}/email.txt
+echo "** Files can be accessed on ${EHLP_SERVER} in folder ${EHLP_DATA} for routine tests." >> ${RTDRTMP}/email.txt
+echo "** Files can be accessed on ${EHLP_SERVER} in folder ${RTDRARXIV} for offline treatment!" >> ${RTDRTMP}/email.txt
 echo >> ${RTDRTMP}/email.txt
+echo "------------------------------------" >> ${RTDRTMP}/email.txt
 echo >> ${RTDRTMP}/email.txt
 echo "Time information for key steps: " >> ${RTDRTMP}/email.txt
 echo >> ${RTDRTMP}/email.txt
