@@ -46,7 +46,7 @@
 ```
 crontab -e
 
-30 19 * * * ${RTEMRPATH}/bin/query_aria.sh
+30 19 * * * ${RTEMRPATH}/bin/main_run.sh
 ```
 
 -------------------------------------
