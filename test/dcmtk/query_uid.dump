@@ -1,0 +1,14 @@
+(0002,0010) UI =LittleEndianExplicit                    #  20, 1 TransferSyntaxUID
+
+(0008,0052) CS [PATIENT]                                #   8, 1 QueryRetrieveLevel
+(0010,0020) LO [60079721]                               #   8, 1 PatientID
+(0020,000d) UI []                     #   0, 0 StudyInstanceUID
+(0020,0010) SH []	# StudyID
+(0008,1030) LO []	# StudyDescription
+(0008,0020) DA []	# StudyDate
+(0008,0030) TM []	# StudyTime
+(0020,000e) UI [] 	# SeriesInstanceUID
+(0008,103e) LO []	# SeriesDescription
+(0020,0011) IS []	# SeriesNumber
+(0008,0021) DA []	# SeriesDate
+(0008,0060) TM []	# SeriesTime
