@@ -89,7 +89,7 @@ do
 	grep -i ID${patientid} ${SQLOUTPATH}/ImgFileLocation.csv | \
 		awk -F "\\" '{print $NF}' | uniq > $RTDRTMP/ptdcmloc.id
 	if [ -s $RTDRTMP/ptdcmloc.id ]; then
-		cp -rf $RTDRDATA/EHLPDCM${DAY3TAG}/DICOM/`cat $RTDRTMP/ptdcmloc.id`/* $PTFOLDER
+		cp -rf $RTDRDATA/EHLPDCM${DAY3TAG}/DICOM/`cat $RTDRTMP/ptdcmloc.id`/* $PTFOLDER > /dev/null 2>&1
 	fi
 
 	#
