@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 
-source ./env.ehelper
+source ./env.common
 
 echo
 echo INFO_TIME: `date '+%Y-%m-%d %H:%M:%S'`  Organizing Retrieved Files ...
