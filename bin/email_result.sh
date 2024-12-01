@@ -14,7 +14,7 @@ echo ">>>>>> $(hostname)  ${BKDATE} ${BKTIME} <<<<<<" > ${RTDRTMP}/email.txt
 echo >> ${RTDRTMP}/email.txt
 echo "Patients data retrieved and archived to files below:" >> ${RTDRTMP}/email.txt
 echo >> ${RTDRTMP}/email.txt
-cd ${RTDRARXIV} && ls -lh | awk '{print $5, "\t", $9}' | grep ${ZIPCOMMON} >> ${RTDRTMP}/email.txt
+cd ${RTDRARXIV} && ls -lh | awk '{print $5, "\t", $9}' | grep $(basename ${ZIPCOMMON}) >> ${RTDRTMP}/email.txt
 echo >> ${RTDRTMP}/email.txt
 echo "** If no file listed or file sizes are not reasonable, please check your RT-DP system !!!" >> ${RTDRTMP}/email.txt
 echo "** Files can be accessed on ${EHLP_SERVER} in folder ${EHLP_DATA} for routine tests." >> ${RTDRTMP}/email.txt
