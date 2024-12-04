@@ -7,10 +7,10 @@
 * **DP-PF**: pfSense firewall for RT-DP backup server
   
 ### Settings and Logins
-* I-WS ip: 172.17.115.102
-* Admin/Administrator on I-WS: Grh\#\*W\*\*\*\*\*\*\*\*\#\#
+* I-WS ip: xxx.xxx.115.102
+* Admin/Administrator on I-WS: GrandRiverHospital\#\*W\*\*\*\*\*\*\*\*\#\#
 * Emtreat on I-WS: Emtreat
-* Linac on VLAN (172.17.96.0/24); and I-WS on VLAN3 (172.17.112.0/22)
+* Linac on VLAN (xxx.xxx.96.0/24); and I-WS on VLAN3 (xxx.xxx.112.0/22)
 
 ## Offline treatment steps
 1. Copy patient backup zip files from DP-SV to a USB drive
@@ -30,8 +30,8 @@
 
 | Units | HIT | IP |
 | --- | --- | ---|
-| RT6 | H191483 | 172.17.96.91 |
-| RT5 | H191484 | 172.17.96.96 |
-| RT3 | H192992 | 172.17.96.93 |
-| RT2 | H192513 | 172.17.96.90 |
-| RT1 | H192276 | 172.17.96.67 |
+| RT6 | H191483 | xxx.xxx.96.91 |
+| RT5 | H191484 | xxx.xxx.96.96 |
+| RT3 | H192992 | xxx.xxx.96.93 |
+| RT2 | H192513 | xxx.xxx.96.90 |
+| RT1 | H192276 | xxx.xxx.96.67 |
