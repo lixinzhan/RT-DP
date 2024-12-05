@@ -4,9 +4,10 @@
 * Minimal Install
 * Currently default partitioning
 * Secure login <Secure>5@LtQ%<Secure>
-* Setup network: `nmtui` --- dc3-dv-rtemr:###.###.115.142/22 [to be changed to private later]
+* Setup network: `nmtui`
 
 ------------------------------------------------------------------------------------------------
+
 <h3>Add necessary packages</h3>
 
 ```
