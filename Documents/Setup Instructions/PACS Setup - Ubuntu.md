@@ -20,7 +20,7 @@
   
   - generate a docker compose file for Orthanc, [docker-compose.yml](https://github.com/lixinzhan/RT-EMR/blob/main/Setup%20Steps%20for%20Emergency%20Rescue/orthanc/docker-compose.yml)
   - generate an Orthanc configuration file, [orthanc.json](https://github.com/lixinzhan/RT-EMR/blob/main/Setup%20Steps%20for%20Emergency%20Rescue/orthanc/etc/orthanc.json)
-  - AET: RTEMR_DV; IP: 172.17.115.142; PORT: 4242
+  - AET: RTEMR_DV; IP: xxx.xxx.115.142; PORT: 4242
   - make sure other DICOM modalities have this node added in
   - bring up the Orthanc docker: `sudo docker compose up -d`
  
@@ -34,7 +34,7 @@
 
 - Other Orthanc modalities
   
-  Add entry to "DicomModalities" session in orthanc.json: `"RTEMR_DV" : [ "RTEMR_DV", "172.17.115.142", 4242 ], `
+  Add entry to "DicomModalities" session in orthanc.json: `"RTEMR_DV" : [ "RTEMR_DV", "xxx.xxx.115.142", 4242 ], `
 
 - Varian ARIA DB Access (dc3-va-dcm --> DICOM Services Configuration --> **VMSDBD**)
 

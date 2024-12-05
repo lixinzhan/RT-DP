@@ -82,7 +82,7 @@ _Note: this share is for the case that guest has no account on the computer. It 
 
   - Enable Interface
   - IPv4 Configuration Type: Static IPv4
-  - IPv4 Address: 172.17.96.1/24
+  - IPv4 Address: xxx.xxx.96.1/24
   - IPv4 Upstream gateway: None
   - Block private networks and loopback addresses: Uncheck
   - Block bogo networks: Uncheck
@@ -93,7 +93,7 @@ _Note: this share is for the case that guest has no account on the computer. It 
 
   - Enable Interface
   - IPv4 Configuration Type: Static IPv4
-  - IPv4 Address: 172.17.112.1/22
+  - IPv4 Address: xxx.xxx.112.1/22
   - IPv4 Upstream gateway: None
   - Block private networks and loopback addresses: Uncheck
   - Block bogo networks: Uncheck
