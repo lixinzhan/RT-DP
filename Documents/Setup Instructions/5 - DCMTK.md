@@ -1,18 +1,18 @@
 <h2>DCMTK Usage</h2>
 
-# dcmtk installation
+### dcmtk installation
 
 ```
 sudo apt install dcmtk
 ```
 
-# generate dcm file from dump for find/query
+### generate dcm file from dump for find/query
 
 ```
 dump2dcm query.dump query.dcm
 ```
 
-# a simple dump
+### a simple dump
 
 ```
 (0002,0010) UI =LittleEndianExplicit  # TransferSyntaxUID
@@ -27,7 +27,7 @@ dump2dcm query.dump query.dcm
 (0008,1030) LO []                     # StudyDescription
 ```
 
-# findscu
+### findscu
 
 ```
 findscu -S -k 0008,0052=${QueryRetrieveLevel} -k ${OTHER-QUERY-INFO} -aet ${LOCAL-AET} -aec ${TARGET-AET} ${AEC-IP} ${AEC-PORT} query.dcm
@@ -43,7 +43,7 @@ OTHER-QUERY-INFO: to update or provide more info in query.dcm
   etc.
 ```
 
-# movescu
+### movescu
 ```
 movescu -S -k 0008,0052=$QueryRetrieveLevel} -k ${OTHER-QUERY-INFO} -aet ${LOCAL-AET} --port {LOCAL-PORT} -aec ${TARGET-AET} ${AEC-IP} ${AEC-PORT} -od ${OUTDIR}
 
@@ -99,3 +99,10 @@ echoscu -d -aet RTEMR_DV -aec VMSDBD 172.17.115.102 105
 ```
 
 is working.
+
+---------------------------
+
+<h3>Varian ARIA DB DICOM Service (dc3-pr-dcm --> DICOM Services Configuration --> **VMSDBD**)</h3>
+
+  ![image](https://github.com/lixinzhan/RT-EMR/assets/6154401/78a1fa6f-520f-4ada-8b94-20526df41590)
+
