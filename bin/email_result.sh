@@ -33,7 +33,7 @@ echo >> ${RTDRTMP}/email.txt
 
 echo "------------------------------------" >> ${RTDRTMP}/email.txt
 echo >> ${RTDRTMP}/email.txt
-echo "Disk space info on which RT-DP is on: " >> ${RTDRTMP}/email.txt
+echo "Disk space info for which RT-DP is on: " >> ${RTDRTMP}/email.txt
 echo >> ${RTDRTMP}/email.txt
 echo $(df -h ${RTDRPATH}) >> ${RTDRTMP}/email.txt
 echo >> ${RTDRTMP}/email.txt
