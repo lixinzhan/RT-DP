@@ -22,13 +22,13 @@ _Note: if pinging a computer without domain name failed, check the client's sett
 
 System --> General Setup   for Hostname, domain, DNS servers and Timezone etc.
 
-![image](images/System%20-%20General%20Setup.PNG))
+![image](images/System%20-%20General%20Setup.PNG)
 
 # DNS resolving
 
 Enable Forwarder but diable resolver for simplicity
 
-![image](https://github.com/lixinzhan/RT-DRm/assets/6154401/38346a65-748f-4c50-98e4-b0aafcc240e6)
+![image](images/Service%20-%20DNS%20Forwarder.PNG)
 ![image](https://github.com/lixinzhan/RT-DRm/assets/6154401/ca6847c2-108e-4f88-8410-550e753d7449)
 
 
