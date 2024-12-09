@@ -22,7 +22,7 @@ _Note: if pinging a computer without domain name failed, check the client's sett
 
 System --> General Setup   for Hostname, domain, DNS servers and Timezone etc.
 
-![image](https://github.com/lixinzhan/RT-DRm/assets/6154401/69d82dd7-753e-423a-8beb-f565e3e4d845)
+![image](images/System%20-%20General%20Setup.PNG))
 
 # DNS resolving
 
