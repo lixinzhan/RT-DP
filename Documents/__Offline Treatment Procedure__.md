@@ -7,7 +7,7 @@
 * **DP-PF**: pfSense firewall for RT-DP backup server
   
 ### Settings and Logins
-* I-WS ip: xxx.xxx.115.102
+* I-WS ip: xxx.xxx.xxx.102
 * Admin/Administrator on I-WS: \*\*\*\#\^W\*\*\*\*\*\*\*\*\#\#
 * Emtreat on I-WS: Emtreat
 * Linac on VLAN (xxx.xxx.96.0/24); and I-WS on VLAN3 (xxx.xxx.112.0/22)
