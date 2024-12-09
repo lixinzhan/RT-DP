@@ -61,7 +61,7 @@ LOCAL-PORT; port used for local aet to communication with target pacs. Usually t
 findscu -d -P -k "(0008,0052)=STUDY" \
 	-k "(0010,0020)=90000001" 
 	-k "(0020,000d)=" \
-	-aet RTEMR_DV -aec VMSDBD 172.17.115.102 105 \
+	-aet RTEMR_DV -aec VMSDBD xxx.xxx.115.102 105 \
 	> output.tmp 2>&1
 cat output.tmp | tr -d '\000' | grep '0020,000d' | awk -F'[][{}]' '{print $2}' > output.sidlist
 ```
@@ -86,7 +86,7 @@ dump2dcm dump.studyquery studyquery.dcm
 then
 
 ```
-findscu +sr -S -aet RTEMR_DV -aec VMSDBD 172.17.115.102 105 studyquery.dcm
+findscu +sr -S -aet RTEMR_DV -aec VMSDBD xxx.xxx.115.102 105 studyquery.dcm
 ```
 
 and any entries in the dump/dcm file can be replaced with an explicit '-k' switch.
@@ -95,7 +95,7 @@ and any entries in the dump/dcm file can be replaced with an explicit '-k' switc
 * ECHOSCU
 
 ```
-echoscu -d -aet RTEMR_DV -aec VMSDBD 172.17.115.102 105
+echoscu -d -aet RTEMR_DV -aec VMSDBD xxx.xxx.115.102 105
 ```
 
 is working.

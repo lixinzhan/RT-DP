@@ -2,30 +2,30 @@
 
 * In account lzhan:
     ```
-    # gpg --generate-key                  # use default configuration: lzhan@rtdrs.vnet OR
+    # gpg --generate-key                  # use default configuration: lzhan@rtdp.vnet OR
     gpg --batch --passphrase '' --quick-gen-key "User Name <Email>" default default 1y  # without passphrase
     gpg --list-keys                     # list public keys
     gpg --list-secret-keys              # list private key pairs
-    gpg --armor --export --output gpg-lzhan.pub lzhan@rtdrs.vnet    # export public key
-    scp gpg-lzhan.pub rtdrs@localhost:~
+    gpg --armor --export --output gpg-lzhan.pub lzhan@rtdp.vnet    # export public key
+    scp gpg-lzhan.pub rtdp@localhost:~
     ```
-* In account rtdrs:
+* In account rtdp:
     ```
-    # gpg --generate-key                  # use default configuration: rtdrs@rtdrs.vnet
+    # gpg --generate-key                  # use default configuration: rtdp@rtdp.vnet
     gpg --batch --passphrase '' --quick-gen-key "User Name <Email>" default default 1y  # without passphrase
     gpg --list-keys                     # list public keys
     gpg --list-secret-keys              # list private key pairs
-    gpg --armor --export --output gpg-rtdrs.pub rtdrs@rtdrs.vnet    # export public key
-    scp gpg-rtdrs.pub lzhan@localhost:~
+    gpg --armor --export --output gpg-rtdp.pub rtdp@rtdp.vnet    # export public key
+    scp gpg-rtdp.pub lzhan@localhost:~
     ```
 * In account lzhan:
     ```
-    gpg --import gpg-rtdrs.pub
-    gpg --encrypt --recipient rtdrs@rtdrs.vnet script-auth.txt      # encrypt for user
-    scp script-auth.txt.gpg rtdrs@localhost:~
+    gpg --import gpg-rtdp.pub
+    gpg --encrypt --recipient rtdp@rtdp.vnet script-auth.txt      # encrypt for user
+    scp script-auth.txt.gpg rtdp@localhost:~
     ```
 
-* In account rtdrs:
+* In account rtdp:
     ```
     gpg --import gpg-lzhan.pub
     chmod 400 script-auth.txt.gpg

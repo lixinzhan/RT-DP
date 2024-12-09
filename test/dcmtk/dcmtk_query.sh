@@ -1,7 +1,7 @@
 #!/bin/bash -x
 #
 
-PACSINFO=' -aet RTDR_TK -aec VMSDBD 172.17.115.172 105 '
+PACSINFO=' -aet RTDR_TK -aec VMSDBD xxx.xxx.115.102 105 '
 QPATIENT='-k (0008,0052)=PATIENT'
 QSTUDY='-k (0008,0052)=STUDY'
 QSERIES='-k (0008,0052)=SERIES'
@@ -42,7 +42,7 @@ tstart=`date +%s`
 #
 # movescu
 #
-PACSINFO=' -aet RTDR_TK --port 4042 -aec VMSDBD 172.17.115.172 105 '
+PACSINFO=' -aet RTDR_TK --port 4042 -aec VMSDBD xxx.xxx.115.102 105 '
 QPATIENT="-k 0008,0052=PATIENT"
 PATIENTID="soo7n721"
 QPATIENTID="-k 0010,0020=$PATIENTID"

@@ -42,7 +42,7 @@ Enable Forwarder but diable resolver for simplicity
 
 ![image](https://github.com/lixinzhan/RT-DRm/assets/6154401/82df4784-7f58-4285-9e44-ed3f1562e5f3)
 
-This is due to the fact that GRH network is in the private network range (172.16/12)
+This is due to the fact that GRH network is in the private network range (172.16.0.0/12)
 
 _Probably "Block Bogon Network" should be disabled too (?) But at least it is working with it on for now._ 
 

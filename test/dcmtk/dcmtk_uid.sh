@@ -1,7 +1,7 @@
 #!/bin/bash -x
 #
 
-PACSINFO=' -aet RTEMR_DV -aec VMSDBD 172.17.115.172 105 '
+PACSINFO=' -aet RTEMR_DV -aec VMSDBD xxx.xxx.115.102 105 '
 QPATIENT='-k (0008,0052)=PATIENT'
 QSTUDY='-k (0008,0052)=STUDY'
 QSERIES='-k (0008,0052)=SERIES'
@@ -21,7 +21,7 @@ dump2dcm ./query_uid.dump query_uid.dcm
 tstart=`date +%s`
 
 QSERIES='-k 0008,0052=SERIES'
-PACSMOVE=' -aet RTEMR_DV --port 4242 -aec VMSDBD 172.17.115.172 105 '
+PACSMOVE=' -aet RTEMR_DV --port 4242 -aec VMSDBD xxx.xxx.115.102 105 '
 
 rm -rf series.tmp
 for seriesuid in `cat SeriesUID.list`
@@ -49,7 +49,7 @@ echo Run time: $(($tend-$tstart))
 # #
 # # movescu
 # #
-# PACSINFO=' -aet RTEMR_DV --port 4242 -aec VMSDBD 172.17.115.172 105 '
+# PACSINFO=' -aet RTEMR_DV --port 4242 -aec VMSDBD xxx.xxx.115.102 105 '
 # QPATIENT="-k 0008,0052=PATIENT"
 # PATIENTID="soo7n721"
 # QPATIENTID="-k 0010,0020=$PATIENTID"

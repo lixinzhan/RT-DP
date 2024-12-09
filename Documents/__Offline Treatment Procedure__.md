@@ -30,8 +30,8 @@
 
 | Units | HIT | IP |
 | --- | --- | ---|
-| RT6 | H191483 | xxx.xxx.96.91 |
-| RT5 | H191484 | xxx.xxx.96.96 |
-| RT3 | H192992 | xxx.xxx.96.93 |
-| RT2 | H192513 | xxx.xxx.96.90 |
-| RT1 | H192276 | xxx.xxx.96.67 |
+| RT6 | Hxx1483 | xxx.xxx.96.91 |
+| RT5 | Hxx1484 | xxx.xxx.96.96 |
+| RT3 | Hxx2992 | xxx.xxx.96.93 |
+| RT2 | Hxx2513 | xxx.xxx.96.90 |
+| RT1 | Hxx2276 | xxx.xxx.96.67 |
