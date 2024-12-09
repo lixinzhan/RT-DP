@@ -104,5 +104,5 @@ is working.
 
 <h3>Varian ARIA DB DICOM Service (dc3-pr-dcm --> DICOM Services Configuration --> **VMSDBD**)</h3>
 
-  ![image](https://github.com/lixinzhan/RT-EMR/assets/6154401/78a1fa6f-520f-4ada-8b94-20526df41590)
+  ![image](images/VDCMD%20Service.png)
 
