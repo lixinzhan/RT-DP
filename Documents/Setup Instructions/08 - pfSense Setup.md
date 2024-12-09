@@ -29,18 +29,18 @@ System --> General Setup   for Hostname, domain, DNS servers and Timezone etc.
 Enable Forwarder but diable resolver for simplicity
 
 ![image](images/Service%20-%20DNS%20Forwarder.PNG)
-![image](https://github.com/lixinzhan/RT-DRm/assets/6154401/ca6847c2-108e-4f88-8410-550e753d7449)
+![image](images/Service%20-%20DNS%20Resolver.PNG)
 
 
 # Port Forwarding
 
 1. Firewall --> NAT --> Add 
 
-![image](https://github.com/lixinzhan/RT-DRm/assets/6154401/db6f85c7-e931-4b9b-8416-01dd4700ec41)
+![image](images/Firewall%20-%20NAT.PNG)
 
 2. Interfaces --> WAN
 
-![image](https://github.com/lixinzhan/RT-DRm/assets/6154401/82df4784-7f58-4285-9e44-ed3f1562e5f3)
+![image](images/Interfaces%20-%20WAN.PNG)
 
 This is due to the fact that GRH network is in the private network range (172.16.0.0/12)
 
@@ -48,7 +48,7 @@ _Probably "Block Bogon Network" should be disabled too (?) But at least it is wo
 
 Firewall --> Rules   should display as below:
 
-![image](https://github.com/lixinzhan/RT-DRm/assets/6154401/60e744ff-31e4-4d6d-9f21-871f9c3b05a3)
+![image](images/Firewall%20-%20Rules%20-%20WAN.PNG)
 
 _Notes:_
   * _Port 22 for SSH, and port 4042 for dcmtk DICOM communication._
