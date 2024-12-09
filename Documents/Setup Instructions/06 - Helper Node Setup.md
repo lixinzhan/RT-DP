@@ -67,11 +67,11 @@ Computer Management --> System Tools --> Task Scheduler --> Task Scheduler Libra
 
 (GRRCC setup: _user account used for task running: eclipse@grhosp.com,_ and _scheduled to run every 30 min._)
 
-![image](https://github.com/user-attachments/assets/78cc4135-d780-4b02-88a4-f1a8472827d6)
+![image](images/Task%20Scheduling%20-%20Security%20Options.png)
 
-![image](https://github.com/user-attachments/assets/d07b0840-95fd-4771-b2b5-eaad9f7feb33)
+![image](images/Task%20Scheduling%20-%20Triggers.png)
 
-![image](https://github.com/user-attachments/assets/0c5df042-fcac-424d-88a7-5e1b64ec722b)
+![image](images/Task%20Scheduling%20-%20Actions.png)
 
 **Note:**
 
