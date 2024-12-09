@@ -14,16 +14,16 @@ To continue treatment , we need to create an I: drive replacement or faked I: dr
 
 * create folder VA_TRANSFER, with full permission for everyone. 
 
-![image](https://github.com/lixinzhan/RT-DRm/assets/6154401/720ecbf3-c97f-49d8-a754-5a2e2d67e15f)
+![image](images/VA_TRANS%20Permission.png)
 
 
 * setup share with full permission for everyone. 
 
-![image](https://github.com/lixinzhan/RT-DRm/assets/6154401/894267c2-fe00-452f-979a-fbc390fb7263)
+![image](images/VA_TRANS%20Properties.png)
 
 * turn off password protected sharing so that **No Account** on the computer is required
 
-![image](https://github.com/lixinzhan/RT-DRm/assets/6154401/319e71ef-d3e5-4520-a596-f65c20bbf97e)
+![image](images/VA_TRANS%20Sharing%20Settings.png)
 
 
 ## 1b. Ubuntu -- public share with no existing local account requirement
@@ -139,7 +139,7 @@ _Note: this share is for the case that guest has no account on the computer. It 
 
 ## 3. Connections for DICOM RT Mode Treatment
 
-![image](https://github.com/lixinzhan/RT-DRm/assets/6154401/9d19d7cd-9c03-4cba-ac4c-214339daf516)
+![image](images/Tx%20Network%20Layout.png)
 
 _Note:_
 * _if a switch is used for routing between vLANs, a multi-layer (layer 3) switch must be used._
