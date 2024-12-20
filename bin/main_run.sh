@@ -75,5 +75,5 @@ echo
 disable_network 2>&1 | tee -a ${LOGFILE}
 
 # finalize script
-./finalize.sh
+./finalize.sh 2>&1 | tee -a ${LOGFILE}
 
