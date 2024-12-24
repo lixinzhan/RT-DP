@@ -90,4 +90,4 @@ echo DICOM Retrieval Done!
 echo
 echo Query start at: $tstart
 echo Query end at:   $tend
-echo INFO_TIME: `date '+%Y-%m-%d %H:%M:%S'`  DICOM query done with running time: $(($tend-$tstart))s
+echo INFO_TIME: `date '+%Y-%m-%d %H:%M:%S'`  DICOM query done with running time: $((($tend-$tstart+30)/60)) min
