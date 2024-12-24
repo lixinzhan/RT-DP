@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 #
 
 source ./env.common
@@ -10,7 +10,7 @@ rm -rf ${RTDRDATA}/__DATETIMESTAMP__
 # Keep only the patient data archive files for the last ${ZIPKEEPDAYS} days
 #
 
-# Refresh timestamp for README.md to avoid deletion.
+# Refresh datetimestamp for README.md to avoid deletion.
 cp ${RTDRARXIV}/README.md ${RTDRARXIV}/README.bk
 rm ${RTDRARXIV}/README.md && mv ${RTDRARXIV}/README.bk ${RTDRARXIV}/README.md
 

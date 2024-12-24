@@ -35,7 +35,8 @@ echo "------------------------------------" >> ${RTDRTMP}/email.txt
 echo >> ${RTDRTMP}/email.txt
 echo "Disk space info for which RT-DP is on: " >> ${RTDRTMP}/email.txt
 echo >> ${RTDRTMP}/email.txt
-echo $(df -h ${RTDRPATH}) >> ${RTDRTMP}/email.txt
+# CR=$(printf '\r') && echo textfile | sed "s/\$\$CR/g" acts as unix2dos
+df -h ${RTDRPATH} >> ${RTDRTMP}/email.txt
 echo >> ${RTDRTMP}/email.txt
 
 
