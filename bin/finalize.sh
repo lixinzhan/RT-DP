@@ -20,7 +20,7 @@ ZIPSMIN=$((${NUMPT}*${PLAN_PCT}/100*${PLANSIZE}*${ZIP2_PCT}/100))
 ZIPSIZE=`du -cm ${ZIPCOMMON}*.zip | grep total | awk '{print $1}'`
 
 # If zip file size is reasonalble, delete the backup ${ZIPKEEPDAYS} days ago.
-ZIPKEEPMINS=$((ZIPKEEPDAYS}*24*60+6*60))  # add 6 hrs to avoid deleting only some files from one day
+ZIPKEEPMINS=$((${ZIPKEEPDAYS}*24*60+6*60))  # add 6 hrs to avoid deleting only some files from one day
 if [ "${ZIPSIZE}" -gt "${ZIPSMIN}" ]; then
     find ${RTDRARXIV} -mmin +${ZIPKEEPMINS} -delete 
     find $(dirname ${SQLOUTPATH}) -type d -mmin +${ZIPKEEPMINS} -prune -execdir rm -rf {} +
