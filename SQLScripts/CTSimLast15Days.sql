@@ -1,3 +1,10 @@
+--
+-- List patients having CT Sim done in the last 15 days
+--
+--    * based on NHPIP code 370
+--    * if there are plans/courses for the pt, list them too
+--
+
 SET NOCOUNT ON
 
 declare @date_of_interest as datetime

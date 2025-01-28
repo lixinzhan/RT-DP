@@ -1,4 +1,9 @@
+--
+-- Obtain the patient list that have treatment done on the backup day
+--
+
 SET NOCOUNT ON
+
 select distinct
 rh.PatientId,
 p.LastName,

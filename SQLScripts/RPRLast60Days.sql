@@ -1,6 +1,8 @@
 --
 -- Search for all RPR entries in Registration for the last two months
 --
+--    RPR: Radiation Planning Requisition
+--
 
 SET NOCOUNT ON
 
