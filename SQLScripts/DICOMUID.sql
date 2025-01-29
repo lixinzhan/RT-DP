@@ -30,8 +30,7 @@ drr.ImageId,
 drr.ImageType,
 drrsr.SeriesUID,
 --drrsr.FrameOfReferenceUID,
-drrsl.SliceUID,
-null
+drrsl.SliceUID
 
 from PlanSetup ps
 inner join Course c on c.CourseSer = ps.CourseSer and c.CourseId like '[1-9]%'
