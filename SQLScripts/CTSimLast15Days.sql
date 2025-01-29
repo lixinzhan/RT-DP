@@ -15,20 +15,28 @@ p.PatientId,
 p.LastName,
 p.FirstName,
 convert(date, p.DateOfBirth) as DOB,
-ltrim(rtrim(p.Sex)) Sex,
+ltrim(rtrim(p.Sex)) as Sex,
 concat(p.HomePhone,'/',p.MobilePhone,'/',p.WorkPhone) as HMWPhone,
 p.SSN,
 dr.LastName as RadOnc,
 act.ActivityCode,
 pc.ProcedureCode,
-substring(convert(varchar, aipc.CompletedDateTime,120),1,10) as SimDate,
-(case when plancrs.CourseId is null then '' else plancrs.CourseId end) as CourseId,
-(case when plancrs.CourseStatus is null then '' else plancrs.CourseStatus end) as CourseStatus,
---convert(varchar,plancrs.CourseCompletedDate,120),
-(case when plancrs.CourseCompletedDate is null then '' else convert(varchar,plancrs.CourseCompletedDate,120) end) as CourseCompletedDate,
-(case when plancrs.PlanSetupId is null then '' else plancrs.PlanSetupId end) as PlanSetupId,
-(case when plancrs.PlanStatus is null then '' else plancrs.PlanStatus end) PlanStatus,
-(case when plancrs.PlanStatusDate is null then '' else convert(varchar,plancrs.PlanStatusDate,120) end) PlanStatusDate
+-- substring(convert(varchar, aipc.CompletedDateTime,120),1,10) as SimDate,
+convert(date, aipc.CompletedDateTime) as SimDate,
+
+COALESCE(plancrs.CourseId, '') as CourseId,
+COALESCE(plancrs.CourseStatus, '') as CourseStatus,
+COALESCE(plancrs.CourseCompletedDate, '') as CourseCompletedDate,
+COALESCE(plancrs.PlanSetupId, '') as PlanSetupId,
+COALESCE(plancrs.PlanStatus, '') as PlanStatus,
+COALESCE(plancrs.PlanStatusDate, '') as PlanStatusDate
+
+--(case when plancrs.CourseId is null then '' else plancrs.CourseId end) as CourseId,
+--(case when plancrs.CourseStatus is null then '' else plancrs.CourseStatus end) as CourseStatus,
+--(case when plancrs.CourseCompletedDate is null then '' else convert(varchar,plancrs.CourseCompletedDate,120) end) as CourseCompletedDate,
+--(case when plancrs.PlanSetupId is null then '' else plancrs.PlanSetupId end) as PlanSetupId,
+--(case when plancrs.PlanStatus is null then '' else plancrs.PlanStatus end) PlanStatus,
+--(case when plancrs.PlanStatusDate is null then '' else convert(varchar,plancrs.PlanStatusDate,120) end) PlanStatusDate
 
 from ActInstProcCode aipc
 inner join ProcedureCode pc on pc.ProcedureCodeSer = aipc.ProcedureCodeSer and pc.ProcedureCode='370'
