@@ -11,7 +11,11 @@ p.SSN,
 concat(p.HomePhone,'/',p.MobilePhone,'/',p.WorkPhone) as HMWPhone,
 addr.EMailAddress,
 addr.AddressType,
-ltrim(rtrim(concat(addr.AddressLine1,' ',addr.AddressLine2,' ',addr.AddressLine3))) as AddressLine,
+ltrim(rtrim(concat(
+    COALESCE(addr.AddressLine1,''),' ',
+    COALESCE(addr.AddressLine2,''),' ',
+    COALESCE(addr.AddressLine3,'')
+))) as AddressLine,
 addr.CityOrTownship,
 addr.StateOrProvince,
 addr.Country,
