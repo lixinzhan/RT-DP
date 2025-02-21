@@ -1,4 +1,4 @@
-<h3>Base OS Installation -- Xubuntu</h3>
+<h2>Base OS Installation -- Xubuntu</h2>
 
 * Timezone: Toronto
 * Minimal Install
@@ -6,7 +6,6 @@
 * Secure login <Secure>5@LtQ%<Secure>
 * Setup network: `nmtui`
 
-------------------------------------------------------------------------------------------------
 
 <h3>Add necessary packages</h3>
 
@@ -20,6 +19,7 @@ sudo apt install curl
 
 ------------------------------------------------------------------------------------------------
 
+## Appendix
 
 <h3>Add second drive</h3>
 
