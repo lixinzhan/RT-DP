@@ -4,7 +4,7 @@
 * Minimal Install
 * Currently default partitioning
 * Secure login <Secure>5@LtQ%<Secure>
-* Setup network: `nmtui`
+* Setup network: `nmtui`, static IP
 
 
 <h3>Add necessary packages</h3>
