@@ -38,7 +38,7 @@ Script `${RT-DP}/bin/base_setup.sh` should be run first for github(02)/sqlcmd(03
     - [`bin/env.sql`](../../bin/env.sql): **DBSVR**
     - [`bin/env.dcmtk`](../../bin/env.dcmtk): **LOCAL_AET, LOCAL_PORT, REMOTE_AET, REMOTE_IP, REMOTE_PORT**
     - [`bin/env.network`](../../bin/env.network): **MYNIC**
-    - [`bin/env.ehelper`](../../bin/env.ehelper): **Image server nfo and ehelper info**
+    - [`bin/env.ehelper`](../../bin/env.ehelper): **Image server info and ehelper info**
 
 6. Setup _Truested Application Entities_ for **Varian DICOM DB Service** on Aria DICOM Server
 
