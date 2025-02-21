@@ -1,4 +1,4 @@
-# Environment variables for sQL queries
+# Environment variables for SQL queries
 #
 
 source ./env.common

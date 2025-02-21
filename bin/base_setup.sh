@@ -8,10 +8,7 @@
 #
 # Parameters for site dependent setup
 #
-MAILNAME="grhosp.on.ca"
-RELAYHOST="mail.grhosp.com"
-FROMMAIL="GRC.RT-DP@grhosp.on.ca"
-ADMINMAIL="lixin.zhan@grhosp.on.ca"
+source ./env.email
 
 #
 sudo apt-get update

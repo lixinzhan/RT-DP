@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 
+source ./env.ehelper
 source ./env.email
 
 echo

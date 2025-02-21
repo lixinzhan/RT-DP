@@ -24,15 +24,14 @@
 	- Everything except DOC_LIST_FILE and DCM_LIST_FILE
 
 * **env.email:**
+  	- _MAILNAME_: e.g. grhosp.on.ca for GRH (if the email address is name@grhosp.on.ca)
+  	- _RELAYHOST_: the SMTP server
 	- _FROMMAIL_
 	- _ADMINMAIL_
 	- _OTHERMAIL_
 
 * **base_setup.sh**
-  	- _MAILNAME_: e.g. grhosp.on.ca for GRH (with typical email address user.name@grhosp.on.ca)
-  	- _RELAYHOST_: the SMTP server
-  	- _FROMMAIL_
-  	- _ADMINMAIL_
+  	- __env.email__ should be set before running this script for setting up automatic email correctly.
   	  
 * **Aria v15 upgrade date**
 	- Starting from v15, Aria documents storage location has been updated and saved in subfolder yyyyQ#. 
