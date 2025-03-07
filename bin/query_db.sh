@@ -11,7 +11,7 @@ echo
 # Queries
 ###############################################
 
-sql_exec "${RTDRPATH}/SQLScripts/TreatmentDeliveredToday.sql"
+sql_exec "${RTDRPATH}/SQLScripts/TreatmentDeliveredLast7Days.sql"
 sql_exec "${RTDRPATH}/SQLScripts/TreatmentScheduledNext7Days.sql"
 sql_exec "${RTDRPATH}/SQLScripts/CTSimLast15Days.sql"
 sql_exec "${RTDRPATH}/SQLScripts/RPRLast60Days.sql"
@@ -42,7 +42,7 @@ sql_exec "${RTDRPATH}/tmp/RPRContents.sql"
 # Obtain Patient List to Prepare for DICOM, Journal, Prescription, and Demographics
 #####################################################################################
 
-# Plan list from TreatmentScheduledNext7Days, TreatmentDeliveredToday, 
+# Plan list from TreatmentScheduledNext7Days, TreatmentDeliveredLast7Days, 
 #   RPRLast60Days with SimCMUFlag
 echo
 echo "Generating _patient_list.uniq for Journal query and DICOM retrieving ..."
@@ -53,7 +53,7 @@ tail -n +3 ${SQLOUTPATH}/TreatmentScheduledNext7Days.csv | \
 	awk -F, '{print $1}' >>  ${SQLOUTPATH}/PatientList
 
 echo "Results from TxDelivered:" >> ${SQLOUTPATH}/PatientList
-tail -n +3 ${SQLOUTPATH}/TreatmentDeliveredToday.csv | \
+tail -n +3 ${SQLOUTPATH}/TreatmentDeliveredLast7Days.csv | \
 	awk -F, '{print $1}' >> ${SQLOUTPATH}/PatientList
 
 echo "Results from CTSim:" >> ${SQLOUTPATH}/PatientList

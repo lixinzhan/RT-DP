@@ -51,6 +51,6 @@ _Note: In case of "," in a column, use QUOTENAME(ColumnName, '"') in SQL script 
 1. Set environment variables including DB server, instances, DB, user, and GPG encrypted pass.
 
 0. Performs DB Queries
-    * TreatmentDeliveredToday.sql
+    * TreatmentDeliveredLast7Days.sql
     * TreatmentScheduledNext7Days.sql
     * CTSimLast15Days.sql

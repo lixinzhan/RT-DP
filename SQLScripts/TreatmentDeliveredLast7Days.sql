@@ -33,7 +33,8 @@ inner join Patient p on p.PatientSer = rh.PatientSer
 left join PatientDoctor pd on pd.PatientSer = rh.PatientSer and pd.PrimaryFlag = '1' and pd.OncologistFlag = '1'
 left join Doctor dr on dr.ResourceSer = pd.ResourceSer
 
-where rh.TreatmentStartTime > convert(date,GETDATE())
+--where rh.TreatmentStartTime > convert(date,GETDATE())
+where rh.TreatmentStartTime > convert(date,dateadd(DAY,-7,getdate()))
 and rh.PatientId not like '$%'
 
 order by rh.PatientId, rh.CourseId, rh.PlanSetupId, rh.FractionNumber
