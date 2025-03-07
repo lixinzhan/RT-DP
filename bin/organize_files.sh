@@ -263,6 +263,7 @@ do
         cd $RTDRPATH && zip -r ${ZIPFILE} Patients/$patientid >> $RTDRTMP/zip.log 2>&1
 	echo $count$'\t'$patientid >> ${PIDLIST}
 done
+cd $RTDRPATH && zip -r ${ZIPFILE} Data/SQLResults/${DATESTAMP} >> $RTDRTMP/zip.log 2>&1
 
 
 echo
