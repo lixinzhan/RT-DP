@@ -249,6 +249,7 @@ echo $DATESTAMP $TIMESTAMP > $RTDRTMP/zip.log
 count=0
 PIDLIST=${ZIPCOMMON}.txt
 touch ${PIDLIST}
+cd $RTDRPATH && zip -r ${ZIPCOMMON}-SQLResults.zip Patients/SQLResults >> $RTDRTMP/zip.log 2>&1
 for patientid in `cat ${SQLOUTPATH}/_patient_list.uniq`
 do
 	count=$((count+1))
@@ -263,7 +264,6 @@ do
         cd $RTDRPATH && zip -r ${ZIPFILE} Patients/$patientid >> $RTDRTMP/zip.log 2>&1
 	echo $count$'\t'$patientid >> ${PIDLIST}
 done
-cd $RTDRPATH && zip -r ${ZIPFILE} Data/SQLResults/${DATESTAMP} >> $RTDRTMP/zip.log 2>&1
 
 
 echo
