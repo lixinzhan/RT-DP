@@ -1,12 +1,12 @@
 *.gpg
 *.swp
 *.log
-Data/DICOM?
+Data/DICOM*
 Data/SQLResults/*
 Data/Documents?
 Data/ECDCM?
-Data/EHLPDCM?
-Data/EHLPDOC?
+Data/EHLPDCM*
+Data/EHLPDOC*
 Data/__DATETIMESTAMP__
 !Data/SQLResults/README.md
 !Data/README.md
