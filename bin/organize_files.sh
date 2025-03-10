@@ -228,7 +228,7 @@ do
 	fi
 
 	#
-	# Treatment Schedule
+	# Treatment Schedule the Next 7 Days
 	#
 	grep -i ${patientid} ${SQLOUTPATH}/TreatmentScheduledNext7Days.csv > $RTDRTMP/txschd.csv
 	if [ -s $RTDRTMP/txschd.csv ]; then
@@ -236,6 +236,19 @@ do
 		head -2 $SQLOUTPATH/TreatmentScheduledNext7Days.csv > $PTFOLDER/DOC/TxSchdNext7Days.csv
 		grep -i ${patientid} $SQLOUTPATH/TreatmentScheduledNext7Days.csv >> $PTFOLDER/DOC/TxSchdNext7Days.csv
 	fi
+
+	#
+	# Treatment Delivered Last 7 Days
+	#
+	grep -i ${patientid} ${SQLOUTPATH}/TreatmentDeliveredLast7Days.csv > $RTDRTMP/txdlv.csv
+	if [ -s $RTDRTMP/txdlv.csv ]; then
+		mkdir -p $PTFOLDER/DOC
+		head -2 $SQLOUTPATH/TreatmentDeliveredLast7Days.csv > $PTFOLDER/DOC/TxDeliveredLast7Days.csv
+		grep -i ${patientid} $SQLOUTPATH/TreatmentDeliveredLast7Days.csv >> $PTFOLDER/DOC/TxDeliveredLast7Days.csv
+		echo >> $PTFOLDER/DOC/TxDeliveredLast7Days.csv
+		echo "See TFH Folder for more information." >> $PTFOLDER/DOC/TxDeliveredLast7Days.csv
+	fi
+
 done
 
 
