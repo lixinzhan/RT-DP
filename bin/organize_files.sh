@@ -28,7 +28,8 @@ do
 	#
 	# Copy Treatment Required DICOM files
 	#
-	PTDCMDATA=${RTDRPATH}/Data/DICOM${DAY3TAG}/${patientid}
+	#PTDCMDATA=${RTDRPATH}/Data/DICOM${DAY3TAG}/${patientid}
+	PTDCMDATA=${RTDRPATH}/Data/DICOM/${patientid}
 	if [ -d ${PTDCMDATA} ]; then
 		# mkdir -p $PTFOLDER/PLAN
 		# cp -rf ${PTDCMDATA}/* $PTFOLDER/PLAN
@@ -89,7 +90,8 @@ do
 	grep -i ID${patientid} ${SQLOUTPATH}/ImgFileLocation.csv | \
 		awk -F "\\" '{print $NF}' | uniq > $RTDRTMP/ptdcmloc.id
 	if [ -s $RTDRTMP/ptdcmloc.id ]; then
-		cp -rf $RTDRDATA/EHLPDCM${DAY3TAG}/DICOM/`cat $RTDRTMP/ptdcmloc.id`/* $PTFOLDER > /dev/null 2>&1
+		#cp -rf $RTDRDATA/EHLPDCM${DAY3TAG}/DICOM/`cat $RTDRTMP/ptdcmloc.id`/* $PTFOLDER > /dev/null 2>&1
+		cp -rf $RTDRDATA/EHLPDCM/DICOM/`cat $RTDRTMP/ptdcmloc.id`/* $PTFOLDER > /dev/null 2>&1
 	fi
 
 	#
@@ -190,7 +192,8 @@ do
 
 		for docfile in `cat $RTDRTMP/ptdocloc.fn`
 		do 
-			cp -rf $RTDRDATA/EHLPDOC${DAY3TAG}/Documents/$docfile $PTFOLDER/DOC
+			#cp -rf $RTDRDATA/EHLPDOC${DAY3TAG}/Documents/$docfile $PTFOLDER/DOC
+			cp -rf $RTDRDATA/EHLPDOC/Documents/$docfile $PTFOLDER/DOC
 		done
 	fi
 

@@ -27,8 +27,13 @@ tstart=`date +%s`
 # * Teatment records
 #
 
-chmod -R 744 ${RTDRPATH}/Data/DICOM${DAY3TAG}
-rm -rf ${RTDRPATH}/Data/DICOM${DAY3TAG}
+#chmod -R 744 ${RTDRPATH}/Data/DICOM${DAY3TAG}
+#rm -rf ${RTDRPATH}/Data/DICOM${DAY3TAG}
+chmod -R 744 ${RTDRPATH}/Data/DICOM*
+rm -rf ${RTDRPATH}/Data/DICOM_PRE2
+mv ${RTDRPATH}/Data/DICOM_PREV ${RTDRPATH}/Data/DICOM_PRE2
+mv ${RTDRPATH}/Data/DICOM      ${RTDRPATH}/Data/DICOM_PREV
+
 
 #tail -n +3 ${SQLOUTPATH}/PlanSSetImgUID.csv | awk -F, -v OFS=',' '{print "ID"$1, $2, $3, $4, $5, $11, $15}' | sort | uniq > ${SQLOUTPATH}/_plansuid.list
 #tail -n +3 ${SQLOUTPATH}/RefImgUID.csv | awk -F, -v OFS=',' '{print "ID"$1, $2, $3, $4, $6}' | sort | uniq > ${SQLOUTPATH}/refimguid.list
@@ -42,7 +47,8 @@ do
 	echo `date '+%Y%m%d %H:%M:%S'`  working on $patientid ... >> $RTDRTMP/movescu.log
 
 	# create folder for dcm storage if not exist yet.
-	OUTPUTDIR=${RTDRPATH}/Data/DICOM${DAY3TAG}/`echo ${patientid:2}`
+	#OUTPUTDIR=${RTDRPATH}/Data/DICOM${DAY3TAG}/`echo ${patientid:2}`
+	OUTPUTDIR=${RTDRPATH}/Data/DICOM/`echo ${patientid:2}`
 	mkdir -p $OUTPUTDIR
 
 	# get SeriesUID for Plan, StructureSet, and Planning CT
