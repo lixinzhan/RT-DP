@@ -11,7 +11,7 @@ mv $RTDRPATH/Patients/README.md $RTDRTMP/readme.pt.backup
 chmod -R 744 $RTDRPATH/Patients/*
 rm -rf $RTDRPATH/Patients/*
 mv $RTDRTMP/readme.pt.backup $RTDRPATH/Patients/README.md
-touch $RTDRPATH/Patients/__RTDR_${DATESTAMP}__
+touch $RTDRPATH/Patients/__RTDR_${DATESTAMP}${TIMESTAMP:0:4}__
 
 # Copy SQL Query Results
 mkdir -p ${RTDRPATH}/Patients/SQLResults

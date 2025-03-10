@@ -42,8 +42,10 @@ fi
 echo $DATESTAMP $TIMESTAMP > $RTDRTMP/unzip.log
 echo Unzipping documents.zip ...
 unzip -o $RTDRPATH/tmp/documents.zip -d ${EHLPDOC}/ >> $RTDRTMP/unzip.log 2>&1
+touch ${EHLPDOC}/__RTDR_${DATESTAMP}${TIMESTAMP:0:4}__
 echo Unzipping dicom.zip ...
 unzip -o $RTDRPATH/tmp/dicom.zip     -d ${EHLPDCM}/ >> $RTDRTMP/unzip.log 2>&1
+touch ${EHLPDCM}/__RTDR_${DATESTAMP}${TIMESTAMP:0:4}__
 
 echo
 echo INFO_TIME: `date '+%Y-%m-%d %H:%M:%S'`  Files from EHELPER Received and Unzipped!

@@ -33,6 +33,8 @@ chmod -R 744 ${RTDRPATH}/Data/DICOM*
 rm -rf ${RTDRPATH}/Data/DICOM_PRE2
 mv ${RTDRPATH}/Data/DICOM_PREV ${RTDRPATH}/Data/DICOM_PRE2
 mv ${RTDRPATH}/Data/DICOM      ${RTDRPATH}/Data/DICOM_PREV
+mkdir -p ${RTDRPATH}/Data/DICOM
+touch ${RTDRPATH}/Data/DICOM/__RTDR_${DATESTAMP}${TIMESTAMP:0:4}__
 
 
 #tail -n +3 ${SQLOUTPATH}/PlanSSetImgUID.csv | awk -F, -v OFS=',' '{print "ID"$1, $2, $3, $4, $5, $11, $15}' | sort | uniq > ${SQLOUTPATH}/_plansuid.list
