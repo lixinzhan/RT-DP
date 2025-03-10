@@ -55,6 +55,9 @@ tail -n +3 ${SQLOUTPATH}/TreatmentScheduledNext7Days.csv | \
 echo "Results from TxDelivered:" >> ${SQLOUTPATH}/PatientList
 tail -n +3 ${SQLOUTPATH}/TreatmentDeliveredLast7Days.csv | \
 	awk -F, '{print $1}' >> ${SQLOUTPATH}/PatientList
+tail -n +3 ${SQLOUTPATH}/TreatmentDeliveredLast7Days.csv | \
+	grep 'Y$' | awk -F, '{print $1}' | \
+	sort | uniq >> ${SQLOUTPATH}/_patient_tx_done.uniq
 
 echo "Results from CTSim:" >> ${SQLOUTPATH}/PatientList
 tail -n +3 ${SQLOUTPATH}/CTSimLast15Days.csv | \
@@ -68,8 +71,9 @@ tail -n +3 ${SQLOUTPATH}/RPRLast60Days.csv | \
 	awk -F, '$13 ~ /1/' | \
 	awk -F, '{print $1}' >> ${SQLOUTPATH}/PatientList
 
-grep -v 'Results' ${SQLOUTPATH}/PatientList | sort | uniq > ${SQLOUTPATH}/_patient_list.uniq
-rm ${SQLOUTPATH}/PatientList
+grep -v 'Results' ${SQLOUTPATH}/PatientList | sort | uniq > ${SQLOUTPATH}/_patient_list.all
+grep -v -x -f ${SQLOUTPATH}/_patient_tx_done.uniq ${SQLOUTPATH}/_patient_list.all > ${SQLOUTPATH}/_patient_list.uniq
+rm ${SQLOUTPATH}/PatientList ${SQLOUTPATH}_patient_list.all
 
 
 # Assign a variable for the list.
