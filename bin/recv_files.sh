@@ -21,22 +21,22 @@ scp -P $EHLP_SSHPORT $EHLP_USER@$EHLP_SERVER:$EHLP_CACHE/*.log $RTDRPATH/Data/lo
 EHLPDOC=${RTDRPATH}/Data/EHLPDOC #${DAY3TAG}
 EHLPDCM=${RTDRPATH}/Data/EHLPDCM #${DAY3TAG}
 chmod -R 744 ${EHLPDOC}* ${EHLPDCM}*
-rm -rf ${EHLPDOC}_PRE2 ${EHLPDCM}_PRE2
-if [ -d ${EHLPDOC}_PREV ]; then
-	mv ${EHLPDOC}_PREV ${EHLPDOC}_PRE2
+rm -rf ${EHLPDOC}.OLD2 ${EHLPDCM}.OLD2
+if [ -d ${EHLPDOC}.OLD ]; then
+	mv ${EHLPDOC}.OLD ${EHLPDOC}.OLD2
 fi
-if [ -d ${EHLPDCM}_PREV ]; then
-	mv ${EHLPDCM}_PREV ${EHLPDCM}_PRE2
+if [ -d ${EHLPDCM}.OLD ]; then
+	mv ${EHLPDCM}.OLD ${EHLPDCM}.OLD2
 fi
 if [ -d ${EHLPDOC} ]; then
     #chmod -R 744 ${EHLPDOC}
     #rm -rf ${EHLPDOC} 
-    mv ${EHLPDOC} ${EHLPDOC}_PREV
+    mv ${EHLPDOC} ${EHLPDOC}.OLD
 fi
 if [ -d ${EHLPDCM} ]; then
     #chmod -R 744 ${EHLPDCM}
     #rm -rf ${EHLPDCM}
-    mv ${EHLPDCM} ${EHLPDCM}_PREV
+    mv ${EHLPDCM} ${EHLPDCM}.OLD
 fi
 
 echo $DATESTAMP $TIMESTAMP > $RTDRTMP/unzip.log
