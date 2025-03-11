@@ -73,7 +73,7 @@ tail -n +3 ${SQLOUTPATH}/RPRLast60Days.csv | \
 
 grep -v 'Results' ${SQLOUTPATH}/PatientList | sort | uniq > ${SQLOUTPATH}/_patient_list.all
 grep -v -x -f ${SQLOUTPATH}/_patient_tx_done.uniq ${SQLOUTPATH}/_patient_list.all > ${SQLOUTPATH}/_patient_list.uniq
-rm ${SQLOUTPATH}/PatientList ${SQLOUTPATH}_patient_list.all
+rm ${SQLOUTPATH}/PatientList ${SQLOUTPATH}/_patient_list.all
 
 
 # Assign a variable for the list.
