@@ -32,8 +32,8 @@ left join PatientDoctor pd on pd.PatientSer = p.PatientSer and pd.PrimaryFlag = 
 left join Doctor dr on dr.ResourceSer = pd.ResourceSer
 
 where 1=1
-and convert(date, sa.ScheduledStartTime) > getdate() --dateadd(WEEKDAY,-1,getdate())
-and convert(date, sa.ScheduledStartTime) < dateadd(DAY,+7,getdate())
+and convert(date, sa.ScheduledStartTime) >= getdate() --dateadd(WEEKDAY,-1,getdate())
+and convert(date, sa.ScheduledStartTime) <= dateadd(DAY,+7,getdate())
 and p.PatientId not like '$%'
 --and sa.ScheduledActivityCode in ('In Progress', 'Open')
 --and sa.WorkFlowActiveFlag = '1'
