@@ -56,15 +56,15 @@ do
 	# get SeriesUID for Plan, StructureSet, and Planning CT
 	grep $patientid ${SQLOUTPATH}/PlanSSetImgUID.csv > ${OUTPUTDIR}/suid.tmp
 	cp ${OUTPUTDIR}/suid.tmp ${OUTPUTDIR}/_dcm.info
-	awk -F, -v OFS=',' '{print "RP", $5}'  ${OUTPUTDIR}/suid.tmp | sort | uniq >  ${OUTPUTDIR}/_suid.list
-	awk -F, -v OFS=',' '{print "RS", $11}' ${OUTPUTDIR}/suid.tmp | sort | uniq >> ${OUTPUTDIR}/_suid.list
-	awk -F, -v OFS=',' '{print "CT", $15}' ${OUTPUTDIR}/suid.tmp | sort | uniq >> ${OUTPUTDIR}/_suid.list
+	awk -F, -v OFS=',' '{print "RP", $5,  $16}'  ${OUTPUTDIR}/suid.tmp | sort | uniq >  ${OUTPUTDIR}/_suid.list
+	awk -F, -v OFS=',' '{print "RS", $11, $17}' ${OUTPUTDIR}/suid.tmp | sort | uniq >> ${OUTPUTDIR}/_suid.list
+	awk -F, -v OFS=',' '{print "CT", $15, $18}' ${OUTPUTDIR}/suid.tmp | sort | uniq >> ${OUTPUTDIR}/_suid.list
 
 	# get SeriesUID for Reference Images, i.e., DRR
 	grep $patientid ${SQLOUTPATH}/RefImgUID.csv > ${OUTPUTDIR}/suid.tmp
 	echo " " >> ${OUTPUTDIR}/_dcm.info
 	cat ${OUTPUTDIR}/suid.tmp >> ${OUTPUTDIR}/_dcm.info
-	awk -F, -v OFS=',' '{print "RI", $6}' ${OUTPUTDIR}/suid.tmp | sort | uniq >> ${OUTPUTDIR}/_suid.list
+	awk -F, -v OFS=',' '{print "RI", $6, $10}' ${OUTPUTDIR}/suid.tmp | sort | uniq >> ${OUTPUTDIR}/_suid.list
 	rm ${OUTPUTDIR}/suid.tmp
 
 
