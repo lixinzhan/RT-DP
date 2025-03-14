@@ -48,4 +48,4 @@ inner join Patient p on p.PatientSer=pt.patient_ser
 
 where 1=1
 --and doc_file_loc in ('10338832.docx', '10338492.docx', '10338452.docx','10338565.docx','10310672.docx','10340355.docx')
-and p.PatientId in ('$20180117' )
+and p.PatientId in ('20240503')

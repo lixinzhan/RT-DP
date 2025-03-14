@@ -43,4 +43,4 @@ inner join Image on Image.ImageSer = sset.ImageSer
 inner join Series imgsr on imgsr.SeriesSer = Image.SeriesSer
 
 where ps.Status in ('TreatApproval', 'PlanApproval')
-and p.PatientId in ('$20180117')
+and p.PatientId in ('20240503')

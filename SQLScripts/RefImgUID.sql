@@ -24,4 +24,4 @@ inner join Series drrsr on drrsr.SeriesSer = drrsl.SeriesSer
 left join Image drr on drr.ImageSer = r.RefImageSer
 
 where ps.Status in ('TreatApproval', 'PlanApproval')
-and p.PatientId in ('$20180117')
+and p.PatientId in ('20240503')

@@ -29,4 +29,4 @@ inner join PointOfContact poc on poc.PatientSer = p.PatientSer
 left  join Address addr on addr.AddressSer = poc.AddressSer --and addr.AddressType='Home'
 
 where 1=1
-and p.PatientId = '$20180117'
+and p.PatientId = '20240503'

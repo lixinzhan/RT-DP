@@ -1,4 +1,4 @@
-# Bash Scripts for RT-DP.
+# Bash Scripts for RT-DP
 
 
 *** __CHANGES TO MAKE FOR EVERY NEW DEPLOYMENT__ ***

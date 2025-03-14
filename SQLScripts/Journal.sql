@@ -26,4 +26,4 @@ and qn.valid_entry_ind = 'Y'
 --and p.PatientId='$20180117'
 --order by p.PatientId, NoteTime;
 
-and p.PatientId='$20180117'
+and p.PatientId='20240503'

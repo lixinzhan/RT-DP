@@ -35,4 +35,4 @@ inner join PrescriptionAnatomy pa on pres.PrescriptionSer = pa.PrescriptionSer a
 where 1=1
 --and convert(date,pres.CreationDate) > dateadd(week, -2, getdate())
 and pres.Status NOT IN ( N'Retired' , N'ErrorOut')
-and p.PatientId in ('$20180117')
+and p.PatientId in ('20240503')

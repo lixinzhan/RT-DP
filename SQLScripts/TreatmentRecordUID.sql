@@ -32,5 +32,5 @@ inner join Course c on c.CourseSer=ps.CourseSer
 inner join Machine m on m.ResourceSer=tr.ActualMachineSer
 
 where 1=1
-and p.PatientId in ('$20180117')
+and p.PatientId in ('20240503')
 order by PatientId, c.CourseId, ps.PlanSetupId, tr.TreatmentRecordDateTime

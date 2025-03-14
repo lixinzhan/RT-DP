@@ -19,4 +19,4 @@ inner join Structure struct on struct.StructureSetSer = sset.StructureSetSer
 where 1=1
 --and ps.Status in ('PlanApproval', 'Unapproved', 'ExternalApproval', 'TreatApproval', 'Reviewed')
 and ps.StatusDate > '20200101'
-and p.PatientId in ('$20180117')
+and p.PatientId in ('20240503')

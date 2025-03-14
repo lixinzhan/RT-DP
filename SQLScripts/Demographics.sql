@@ -28,4 +28,4 @@ inner join PatientAddress pa on pa.PatientSer = p.PatientSer
 inner join Address addr on addr.AddressSer = pa.AddressSer --and addr.AddressType='Home'
 
 where 1=1
-and p.PatientId = '$20180117'
+and p.PatientId = '20240503'

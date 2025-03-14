@@ -57,4 +57,4 @@ left join Series drrsr on drrsr.SeriesSer = drrsl.SeriesSer
 left join Image drr on drr.ImageSer = r.RefImageSer
 --left join Series drrsr on drrsr.SeriesSer = drr.SeriesSer
 
-where p.PatientId = '$20180117'
+where p.PatientId = '20240503'
