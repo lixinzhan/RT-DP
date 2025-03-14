@@ -10,6 +10,7 @@ drrsr.SeriesUID as RISeriesInstanceUID,
 drrsl.SliceUID as RISOPInstanceUID,
 drr.ImageId,
 drr.ImageType,
+drrsl.HstryDateTime as DRRInstHstryDateTime,
 null
 
 from PlanSetup ps

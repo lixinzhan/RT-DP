@@ -14,6 +14,7 @@ rtp.PlanUID as PlanSOPInstanceUID,
 rtp.NoFractions,
 (rtp.PrescribedDose*rtp.NoFractions) as TotalDose,
 ps.Status,
+
 sset.StructureSetId,
 ssetsr.SeriesUID as SSetSeriesInstanceUID,
 --ssetsr.SeriesId as SSetSeriesId,
@@ -24,6 +25,11 @@ Image.ImageId,
 imgsr.SeriesId as ImageSeriesId,
 imgsr.SeriesUID as ImageSeriesInstanceUID,
 --imgsr.SeriesModality
+
+rtp.HstryDateTime as PlanInstHstryDateTime,
+sset.HstryDateTime as SSetInstHstryDateTime,
+imgsr.HstryDateTime as ImgSeriesHstryDateTime,
+
 null
 
 from PlanSetup ps
