@@ -43,6 +43,7 @@ touch ${RTDRPATH}/Data/DICOM/__RTDR_${DATESTAMP}${TIMESTAMP:0:4}__
 tail -n +3 ${SQLOUTPATH}/PlanSSetImgUID.csv | awk -F, '{print $1}' | sort | uniq > ${SQLOUTPATH}/_patient4suid.list
 
 echo $DATESTAMP $TIMESTAMP > $RTDRTMP/movescu.log
+COUNTER_Q=0
 for patientid in `cat ${SQLOUTPATH}/_patient4suid.list`
 do
 	echo `date '+%Y%m%d %H:%M:%S'`  working on $patientid ...
@@ -116,6 +117,7 @@ do
 		echo "DICOM $MODELITY query $suid ..."
 		echo "Processing $MODELITY with $suid ..." >> $RTDRTMP/movescu.log
 		movescu -v -P $QSERIES -k 0020,000e=${suid} $PACS4R -od $OUTPUTDIR >> $RTDRTMP/movescu.log 2>&1
+		COUNTER_Q=$((COUNTER_Q+1))
 	done
 done
 
@@ -126,3 +128,4 @@ echo
 echo Query start at: $tstart
 echo Query end at:   $tend
 echo INFO_TIME: `date '+%Y-%m-%d %H:%M:%S'`  DICOM query done with running time: $((($tend-$tstart+30)/60)) min
+echo INFO_TIME: `date '+%Y-%m-%d %H:%M:%S'`  DCM Query / Total: $COUNTER_Q / `cat ${SQLOUTPATH}/_patient4suid.list | wc -l`
