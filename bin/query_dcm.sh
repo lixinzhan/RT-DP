@@ -84,14 +84,22 @@ do
 
 	# if there is no change, simply copy from existing backup
 	OLDOUTPUTDIR=${RTDRPATH}/Data/DICOM.OLD/`echo ${patientid:2}`
-	SUIDMATCH=`cmp --silent -- "$OUTPUTDIR/_suid.list" "$OLDOUTPUTDIR/_suid.list"`
-	RPMATCH=(( `ls $OLDOUTPUTDIR/RP* | wc -l` == `grep RP $OLDOUTPUTDIR/_suid.list | wc -l` ))
-	RSMATCH=(( `ls $OLDOUTPUTDIR/RS* | wc -l` == `grep RS $OLDOUTPUTDIR/_suid.list | wc -l` ))
-	RIMATCH=(( `ls $OLDOUTPUTDIR/RI* | wc -l` == `grep RI $OLDOUTPUTDIR/_suid.list | wc -l` ))
-	echo SUIDMATCH: $SUIDMATCH,  RPMATCH: $RPMATCH,  RSMATCH: $RSMATCH, RIMATCH: $RIMATCH
+	RPCNT0=`ls -lq $OLDOUTPUTDIR/RP* 2>/dev/null | wc -l`
+        RPCNT1=`grep RP $OUTPUTDIR/_suid.list 2>/dev/null | wc -l`
+	RSCNT0=`ls -lq $OLDOUTPUTDIR/RS* 2>/dev/null | wc -l`
+        RSCNT1=`grep RS $OUTPUTDIR/_suid.list 2>/dev/null | wc -l`
+	RICNT0=`ls -lq $OLDOUTPUTDIR/RI* 2>/dev/null | wc -l`
+        RICNT1=`grep RI $OUTPUTDIR/_suid.list 2>/dev/null | wc -l`
+	SUIDMATCH=`cmp --silent -- "$OUTPUTDIR/_suid.list" "$OLDOUTPUTDIR/_suid.list" | echo $?`
+	echo "                  Count of RP/RS/RI old vs new: $RPCNT0/$RSCNT0/$RICNT0 vs $RPCNT1/$RSCNT1/$RICNT1" 
 
-	# if cmp --silent -- "$OUTPUTDIR/_suid.list" "$OLDOUTPUTDIR/_suid.list"; then
-	if $SUIDMATCH && $RPMATCH && $RSMATCH && RIMATCH; then
+	DO_COPY=true
+	if [ $SUIDMATCH -ne 0 ];    then DO_COPY=false; fi
+        if [ $RPCNT0 -ne $RPCNT1 ]; then DO_COPY=false; fi
+        if [ $RSCNT0 -ne $RSCNT1 ]; then DO_COPY=false; fi
+        if [ $RICNT0 -ne $RICNT1 ]; then DO_COPY=false; fi
+
+	if $DO_COPY; then
 		echo "                  No change. Copy from existing backups!"
 		echo "                  No change. Copy from existing backups!" >> $RTDRTMP/movescu.log
 		cp -rf $OLDOUTPUTDIR/* $OUTPUTDIR
@@ -100,12 +108,13 @@ do
 
 
 	#
-	# query DICOM RP, SSet, CT, RefImg, MotionTracking, and TreatmentRecord using DCMTK
+	# query DICOM RP, SSet, CT, RefImg, <del>MotionTracking, and TreatmentRecord using DCMTK</del>
 	#
 	for suid in `awk -F, '{print $2}' ${OUTPUTDIR}/_suid.list`
 	do
-		echo "DICOM query $suid ..."
-		echo "Processing $suid ..." >> $RTDRTMP/movescu.log
+		MODELITY=`grep $suid ${OUTPUTDIR}/_suid.list | awk -F, '{print $1}'`
+		echo "DICOM $MODELITY query $suid ..."
+		echo "Processing $MODELITY with $suid ..." >> $RTDRTMP/movescu.log
 		movescu -v -P $QSERIES -k 0020,000e=${suid} $PACS4R -od $OUTPUTDIR >> $RTDRTMP/movescu.log 2>&1
 	done
 done
