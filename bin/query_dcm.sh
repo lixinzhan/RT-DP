@@ -85,8 +85,8 @@ do
 	# if there is no change, simply copy from existing backup
 	OLDOUTPUTDIR=${RTDRPATH}/Data/DICOM.OLD/`echo ${patientid:2}`
 	if cmp --silent -- "$OUTPUTDIR/_suid.list" "$OLDOUTPUTDIR/_suid.list"; then
-		echo "                  No change. Copy from old backup!"
-		echo "                  No change. Copy from old backup!" >> $RTDRTMP/movescu.log
+		echo "                  No change. Copy from existing backups!"
+		echo "                  No change. Copy from existing backups!" >> $RTDRTMP/movescu.log
 		cp -rf $OLDOUTPUTDIR/* $OUTPUTDIR
 		continue
 	fi
