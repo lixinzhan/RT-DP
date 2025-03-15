@@ -92,7 +92,7 @@ do
 	RICNT0=`ls -lq $OLDOUTPUTDIR/RI* 2>/dev/null | wc -l`
         RICNT1=`grep RI $OUTPUTDIR/_suid.list 2>/dev/null | wc -l`
 	SUIDMATCH=`cmp --silent -- "$OUTPUTDIR/_suid.list" "$OLDOUTPUTDIR/_suid.list" | echo $?`
-	echo "                  Count of RP/RS/RI old vs new: $RPCNT0/$RSCNT0/$RICNT0 vs $RPCNT1/$RSCNT1/$RICNT1" 
+	echo "                  RP/RS/RI OLD vs NEW: $RPCNT0/$RSCNT0/$RICNT0 vs $RPCNT1/$RSCNT1/$RICNT1; SUIDMATCH: $SUIDMATCH" 
 
 	DO_COPY=true
 	if [ $SUIDMATCH -ne 0 ];    then DO_COPY=false; fi
@@ -111,21 +111,21 @@ do
 	#
 	# query DICOM RP, SSet, CT, RefImg, <del>MotionTracking, and TreatmentRecord using DCMTK</del>
 	#
-	for suid in `awk -F, '{print $2}' ${OUTPUTDIR}/_suid.list`
+	for suid in `awk -F, '{print $2}' ${OUTPUTDIR}/_suid.list | uniq`
 	do
-		MODELITY=`grep $suid ${OUTPUTDIR}/_suid.list | awk -F, '{print $1}'`
+		MODELITY=`grep $suid ${OUTPUTDIR}/_suid.list | awk -F, '{print $1}' | uniq`
 		echo "DICOM $MODELITY query $suid ..."
 		echo "Processing $MODELITY with $suid ..." >> $RTDRTMP/movescu.log
 		movescu -v -P $QSERIES -k 0020,000e=${suid} $PACS4R -od $OUTPUTDIR >> $RTDRTMP/movescu.log 2>&1
-		COUNTER_Q=$((COUNTER_Q+1))
 	done
+	COUNTER_Q=$((COUNTER_Q+1))
 done
 
 tend=`date +%s`
 echo
 echo DICOM Retrieval Done!
+echo INFO_TIME: `date '+%Y-%m-%d %H:%M:%S'`  DICOM_Queried/Total: $COUNTER_Q / `cat ${SQLOUTPATH}/_patient4suid.list | wc -l`
 echo
 echo Query start at: $tstart
 echo Query end at:   $tend
 echo INFO_TIME: `date '+%Y-%m-%d %H:%M:%S'`  DICOM query done with running time: $((($tend-$tstart+30)/60)) min
-echo INFO_TIME: `date '+%Y-%m-%d %H:%M:%S'`  DCM Query / Total: $COUNTER_Q / `cat ${SQLOUTPATH}/_patient4suid.list | wc -l`
