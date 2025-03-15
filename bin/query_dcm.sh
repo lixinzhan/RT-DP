@@ -87,7 +87,7 @@ do
 	if cmp --silent -- "$OUTPUTDIR/_suid.list" "$OLDOUTPUTDIR/_suid.list"; then
 		echo "                  No change. Copy from old backup!"
 		echo "                  No change. Copy from old backup!" >> $RTDRTMP/movescu.log
-		cp -rf $OLDOUTPUTDIR $OUTPUTDIR
+		cp -rf $OLDOUTPUTDIR/* $OUTPUTDIR
 		continue
 	fi
 
