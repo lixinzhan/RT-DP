@@ -82,11 +82,22 @@ do
 	# awk -F, -v OFS=',' '{print "RT", $7}' ${OUTPUTDIR}/suid.tmp | sort | uniq >> ${OUTPUTDIR}/_suid.list
 	# rm ${OUTPUTDIR}/suid.tmp
 
+	# if there is no change, simply copy from existing backup
+	OLDOUTPUTDIR=${RTDRPATH}/Data/DICOM.OLD/`echo ${patientid:2}`
+	if cmp --silent -- "$OUTPUTDIR/_suid.list" "$OLDOUTPUTDIR/_suid.list"; then
+		echo "    No change. Copy from old backup!"
+		echo "    No change. Copy from old backup!" >> $RTDRTMP/movescu.log
+		cp -rf $OLDOUTPUTDIR $OUTPUTDIR
+		continue
+	fi
+
+
 	#
 	# query DICOM RP, SSet, CT, RefImg, MotionTracking, and TreatmentRecord using DCMTK
 	#
 	for suid in `awk -F, '{print $2}' ${OUTPUTDIR}/_suid.list`
 	do
+		echo "DICOM query $suid ..."
 		echo "Processing $suid ..." >> $RTDRTMP/movescu.log
 		movescu -v -P $QSERIES -k 0020,000e=${suid} $PACS4R -od $OUTPUTDIR >> $RTDRTMP/movescu.log 2>&1
 	done

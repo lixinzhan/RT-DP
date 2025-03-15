@@ -41,7 +41,16 @@ enable_network 2>&1 | tee -a ${LOGFILE}
 ./send_fileloc.sh 2>&1 | tee -a ${LOGFILE}
 
 # DICOM Query/Retrieval from ARIA DICOM DB Service
+t_querystart=`date +%s`
 ./query_dcm.sh 2>&1 | tee -a ${LOGFILE}
+t_queryend=`date +%s`
+tsec_q=$(($t_queryend-$t_querystart))
+echo "DICOM query took $tsec_q seconds" | tee -a ${LOGFILE}
+if min_query < 3600; then
+	disable_network 2>&1 | tee -a ${LOGFILE}
+	sleep $((3600-$tsec_q))
+	enable_network 2>&1 | tee -a ${LOGFILE}
+fi
 
 # Copy doc/pdf and DCM from ehelper
 ./recv_files.sh 2>&1 | tee -a ${LOGFILE}
