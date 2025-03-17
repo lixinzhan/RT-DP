@@ -91,7 +91,7 @@ do
         RSCNT1=`grep RS $OUTPUTDIR/_suid.list 2>/dev/null | wc -l`
 	RICNT0=`ls -lq $OLDOUTPUTDIR/RI* 2>/dev/null | wc -l`
         RICNT1=`grep RI $OUTPUTDIR/_suid.list 2>/dev/null | wc -l`
-	SUIDMATCH=`cmp --silent -- "$OUTPUTDIR/_suid.list" "$OLDOUTPUTDIR/_suid.list" | echo $?`
+	SUIDMATCH=`cmp --silent -- "$OUTPUTDIR/_suid.list" "$OLDOUTPUTDIR/_suid.list" ; echo $?`
 	echo "                  RP/RS/RI OLD vs NEW: $RPCNT0/$RSCNT0/$RICNT0 vs $RPCNT1/$RSCNT1/$RICNT1; SUIDMATCH: $SUIDMATCH" 
 
 	DO_COPY=true
