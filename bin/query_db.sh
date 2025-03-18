@@ -174,6 +174,18 @@ echo "and p.PatientId in (${PTIDLIST})" >> ${RTDRPATH}/tmp/DocFileLocation.sql
 sql_exec "${RTDRPATH}/tmp/DocFileLocation.sql"
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+##############################################################3
+# Brief Summary
+##############################################################3
+
+# Brief Summary Query
+grep -v '^$' ${RTDRPATH}/SQLScripts/BriefSummary.sql | tail -1 > ${RTDRPATH}/tmp/orderby.tmp
+awk '!/^[[:space:]]*$/' ${RTDRPATH}/SQLScripts/BriefSummary.sql | head -n -2 > ${RTDRPATH}/tmp/BriefSummary.sql
+echo "and p.PatientId in (${PTIDLIST})" >> ${RTDRPATH}/tmp/BriefSummary.sql
+cat ${RTDRPATH}/tmp/orderby.tmp >> ${RTDRPATH}/tmp/BriefSummary.sql
+sql_exec "${RTDRPATH}/tmp/BriefSummary.sql"
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 echo
 echo INFO_TIME: `date '+%Y-%m-%d %H:%M:%S'`  DB Queries All Done!
 echo

@@ -40,4 +40,6 @@ left join vv_RadiationHstry rh on rh.PlanSetupSer = ps.PlanSetupSer
 left join PatientDoctor pd on pd.PatientSer=p.PatientSer and pd.PrimaryFlag='1' and pd.OncologistFlag='1'
 left join Doctor dr on dr.ResourceSer=pd.ResourceSer
 
-where p.PatientId in ('20240503')
+where 1=1
+and p.PatientId in ('20240503')
+order by PatientId, c.CourseId, ps.PlanSetupId
