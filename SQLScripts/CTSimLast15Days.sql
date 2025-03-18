@@ -27,7 +27,7 @@ convert(date, aipc.CompletedDateTime) as SimDate,
 COALESCE(plancrs.CourseId, '') as CourseId,
 COALESCE(plancrs.CourseStatus, '') as CourseStatus,
 COALESCE(plancrs.CourseCompletedDate, '') as CourseCompletedDate,
-COALESCE(plancrs.PlanSetupId, '') as PlanSetupId,
+replace(COALESCE(plancrs.PlanSetupId, ''),',',';') as PlanSetupId,
 COALESCE(plancrs.PlanStatus, '') as PlanStatus,
 COALESCE(plancrs.PlanStatusDate, '') as PlanStatusDate
 

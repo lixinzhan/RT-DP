@@ -3,7 +3,7 @@ SET NOCOUNT ON
 select distinct
 concat('ID', p.PatientId) as PatientId,
 c.CourseId,
-ps.PlanSetupId,
+replace(ps.PlanSetupId,',',';') as PlanSetupId,
 ps.PlanSetupSer,
 ps.Status,
 drrsr.SeriesUID as RISeriesInstanceUID,
