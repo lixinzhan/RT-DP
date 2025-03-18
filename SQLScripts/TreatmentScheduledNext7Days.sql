@@ -2,6 +2,7 @@
 -- List treatment schedules for the next 7 days
 --
 
+SET NOCOUNT ON
 
 select distinct
 --sa.ScheduledActivitySer,
