@@ -51,23 +51,23 @@ rm -f ${SQLOUTPATH}/_PatientListVerbose*
 
 echo "Results from TxScheduled:" > ${SQLOUTPATH}/_PatientListVerbose
 tail -n +3 ${SQLOUTPATH}/TreatmentScheduledNext7Days.csv | \
-	awk -F, '{print $1}' >>  ${SQLOUTPATH}/_PatientListVerbose
+	awk -F, '{print $1}' | sort | uniq >>  ${SQLOUTPATH}/_PatientListVerbose
 
 echo "Results from TxDelivered:" >> ${SQLOUTPATH}/_PatientListVerbose
 tail -n +3 ${SQLOUTPATH}/TreatmentDeliveredLast7Days.csv | \
-	awk -F, '{print $1}' >> ${SQLOUTPATH}/_PatientListVerbose
+	awk -F, '{print $1}' | sort | uniq >> ${SQLOUTPATH}/_PatientListVerbose
 
 echo "Results from CTSim:" >> ${SQLOUTPATH}/_PatientListVerbose
 tail -n +3 ${SQLOUTPATH}/CTSimLast15Days.csv | \
 	awk -F, '$16 !~ /^Completed/' | \
 	awk -F, '$16 !~ /Unapproved/' | \
 	awk -F, '$16 !~ /Retired/' | \
-	awk -F, '{print $1}' >> ${SQLOUTPATH}/_PatientListVerbose
+	awk -F, '{print $1}' | sort | uniq >> ${SQLOUTPATH}/_PatientListVerbose
 
 echo "Results from RPR:" >> ${SQLOUTPATH}/_PatientListVerbose
 tail -n +3 ${SQLOUTPATH}/RPRLast60Days.csv | \
 	awk -F, '$13 ~ /1/' | \
-	awk -F, '{print $1}' >> ${SQLOUTPATH}/_PatientListVerbose
+	awk -F, '{print $1}' | sort | uniq >> ${SQLOUTPATH}/_PatientListVerbose
 
 grep -v 'Results' ${SQLOUTPATH}/_PatientListVerbose | sort | uniq > ${SQLOUTPATH}/_patient_list.uniq
 #rm ${SQLOUTPATH}/_PatientListVerbose
