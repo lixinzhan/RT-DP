@@ -1,3 +1,9 @@
+--
+-- Retrieve DICOM UID
+--
+
+SET NOCOUNT ON
+
 select
 p.PatientId,
 c.CourseId,
