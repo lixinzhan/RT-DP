@@ -43,4 +43,4 @@ left join Doctor dr on dr.ResourceSer=pd.ResourceSer
 
 where 1=1
 and p.PatientId in ('20240503')
-order by PatientId, c.CourseId, ps.PlanSetupId
+order by PatientId, c.CourseId, PlanSetupId

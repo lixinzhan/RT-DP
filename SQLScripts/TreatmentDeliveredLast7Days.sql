@@ -37,4 +37,4 @@ left join Doctor dr on dr.ResourceSer = pd.ResourceSer
 where rh.TreatmentStartTime >= convert(date,dateadd(DAY,-7,getdate()))
 and rh.PatientId not like '$%'
 
-order by rh.PatientId, rh.CourseId, rh.PlanSetupId, rh.FractionNumber
+order by rh.PatientId, rh.CourseId, PlanSetupId, rh.FractionNumber

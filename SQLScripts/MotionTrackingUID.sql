@@ -30,4 +30,4 @@ inner join Equipment eqp on eqp.EquipmentSer=tr.EquipmentSer
 
 where tr.CreationDate > @date_of_interest
 and p.PatientId in ('20240503')
-order by PatientId, c.CourseId, ps.PlanSetupId, tr.CreationDate
+order by PatientId, c.CourseId, PlanSetupId, tr.CreationDate
