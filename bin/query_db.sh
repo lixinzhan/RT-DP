@@ -54,8 +54,16 @@ tail -n +3 ${SQLOUTPATH}/TreatmentScheduledNext7Days.csv | \
 	awk -F, '{print $1}' | sort | uniq >>  ${SQLOUTPATH}/_PatientListVerbose
 
 echo "Results from TxDelivered:" >> ${SQLOUTPATH}/_PatientListVerbose
+#tail -n +3 ${SQLOUTPATH}/TreatmentDeliveredLast7Days.csv | \
+#	awk -F, '{print $1}' | sort | uniq >> ${SQLOUTPATH}/_PatientListVerbose
+tail -n +3 ${SQLOUTPATH}/TreatmentDeliveredLast7Days.csv | grep 'Y$' | \
+	awk -F, '{print $1,$9}' | sort | uniq > $RTDRTMP/pt_crs_done
 tail -n +3 ${SQLOUTPATH}/TreatmentDeliveredLast7Days.csv | \
-	awk -F, '{print $1}' | sort | uniq >> ${SQLOUTPATH}/_PatientListVerbose
+	awk -F, '{print $1,$9}' | sort | uniq > $RTDRTMP/pt_crs_all
+#grep -v -x -f $RTDRTMP/pt_crs_done $RTDRTMP/pt_crs_all | \
+#	awk '{print $1}' | sort | uniq >> ${SQLOUTPATH}/_PatientListVerbose
+comm -2 -3 $RTDRTMP/pt_crs_all $RTDRTMP/pt_crs_done | \
+	awk '{print $1}' | sort | uniq >> ${SQLOUTPATH}/_PatientListVerbose
 
 echo "Results from CTSim:" >> ${SQLOUTPATH}/_PatientListVerbose
 tail -n +3 ${SQLOUTPATH}/CTSimLast15Days.csv | \
