@@ -9,7 +9,7 @@ dr.LastName as RadOnc,
 c.CourseId,
 c.ClinicalStatus as CrsStatus,
 c.StartDateTime as CrsStartDateTime,
-c.CompletedDateTime as CrsCompletedDateTime,
+COALESCE(convert(varchar(32),c.CompletedDateTime,120),'') as CrsCompletedDateTime,
 replace(ps.PlanSetupId,',','_') as PlanSetupId,
 --ps.PlanSetupId,
 ps.Status as PlanStatus,
@@ -19,13 +19,13 @@ rtp.CreationDate as RTPCreationDate,
 rtp.PrescribedDose*rtp.NoFractions as TotalDose,
 rtp.NoFractions,
 (select
-	max(vrh.FractionNumber) 
+	COALESCE(max(vrh.FractionNumber),'')
 	from vv_RadiationHstry vrh
 	where vrh.PlanSetupSer=ps.PlanSetupSer
 	group by vrh.PlanSetupId
 	) as LastFracDelivered,
 (select
-	max(vrh.TreatmentStartTime)
+	COALESCE(convert(varchar(32),max(vrh.TreatmentStartTime),120),'')
 	from vv_RadiationHstry vrh
 	where vrh.PlanSetupSer=ps.PlanSetupSer
 	group by vrh.PlanSetupId

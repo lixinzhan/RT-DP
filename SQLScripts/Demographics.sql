@@ -4,7 +4,7 @@ select distinct
 p.PatientId,
 p.LastName,
 p.FirstName,
-p.MiddleName,
+COALESCE(p.MiddleName,'') as MiddleName,
 convert(date, p.DateOfBirth) as DOB,
 ltrim(rtrim(p.Sex)) as Sex,
 p.SSN,
