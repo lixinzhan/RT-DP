@@ -14,7 +14,7 @@ pres.NumberOfFractions as PresFractions,
 	WHERE pai.ItemType LIKE N'DOSE PER FRACTION' AND pai.PrescriptionAnatomySer = pa.PrescriptionAnatomySer
 ) as PresFracDose,
 
-pres.PrescriptionName,
+replace(pres.PrescriptionName,',','_') as PrescriptionName,
 pres.Technique as PresTechnique,
 pres.Status as PresStatus,
 pres.CreationUserName,

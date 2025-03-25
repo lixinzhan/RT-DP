@@ -9,17 +9,17 @@ convert(date, p.DateOfBirth) as DOB,
 ltrim(rtrim(p.Sex)) as Sex,
 p.SSN,
 concat(p.HomePhone,'/',p.MobilePhone,'/',p.WorkPhone) as HMWPhone,
-addr.EMailAddress,
+COALESCE(addr.EMailAddress,'') as Email,
 addr.AddressType,
 ltrim(rtrim(concat(
     COALESCE(addr.AddressLine1,''),' ',
     COALESCE(addr.AddressLine2,''),' ',
     COALESCE(addr.AddressLine3,'')
 ))) as AddressLine,
-addr.CityOrTownship,
-addr.StateOrProvince,
-addr.Country,
-addr.PostalCode,
+COALESCE(addr.CityOrTownship,'') as CityOrTownship,
+COALESCE(addr.StateOrProvince,'') as StateOrProvince,
+COALESCE(addr.Country,'') as Country,
+COALESCE(addr.PostalCode,'') as PostalCode,
 p.Language,
 p.PatientSer
 

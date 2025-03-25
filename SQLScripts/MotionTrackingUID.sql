@@ -6,7 +6,7 @@ set @date_of_interest = dateadd(DAY,-60,getdate())
 select distinct
 concat('ID', p.PatientId) as PatientId,
 c.CourseId,
-replace(ps.PlanSetupId,',',';') as PlanSetupId,
+replace(ps.PlanSetupId,',','_') as PlanSetupId,
 stu.StudyId,
 stu.StudyUID,
 ser.SeriesUID,
