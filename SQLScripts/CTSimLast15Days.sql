@@ -26,10 +26,10 @@ convert(date, aipc.CompletedDateTime) as SimDate,
 
 COALESCE(plancrs.CourseId, '') as CourseId,
 COALESCE(plancrs.CourseStatus, '') as CourseStatus,
-COALESCE(plancrs.CourseCompletedDate, '') as CourseCompletedDate,
+COALESCE(convert(varchar(32),plancrs.CourseCompletedDate,120), '') as CourseCompletedDate,
 replace(COALESCE(plancrs.PlanSetupId, ''),',',';') as PlanSetupId,
 COALESCE(plancrs.PlanStatus, '') as PlanStatus,
-COALESCE(plancrs.PlanStatusDate, '') as PlanStatusDate
+COALESCE(convert(varchar(32),plancrs.PlanStatusDate,120), '') as PlanStatusDate
 
 --(case when plancrs.CourseId is null then '' else plancrs.CourseId end) as CourseId,
 --(case when plancrs.CourseStatus is null then '' else plancrs.CourseStatus end) as CourseStatus,
