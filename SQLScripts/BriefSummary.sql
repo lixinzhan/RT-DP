@@ -18,18 +18,20 @@ ps.HstryDateTime as PlanLastUpdatedDateTime,
 rtp.CreationDate as RTPCreationDate,
 rtp.PrescribedDose*rtp.NoFractions as TotalDose,
 rtp.NoFractions,
-(select
-	COALESCE(max(vrh.FractionNumber),'')
+COALESCE(
+	(select
+	max(vrh.FractionNumber)
 	from vv_RadiationHstry vrh
 	where vrh.PlanSetupSer=ps.PlanSetupSer
 	group by vrh.PlanSetupId
-	) as LastFracDelivered,
-(select
-	COALESCE(convert(varchar(32),max(vrh.TreatmentStartTime),120),'')
+	),'') as LastFracDelivered,
+COALESCE(convert(varchar(32),
+	(select
+	max(vrh.TreatmentStartTime)
 	from vv_RadiationHstry vrh
 	where vrh.PlanSetupSer=ps.PlanSetupSer
 	group by vrh.PlanSetupId
-	) as LastDeliveryDateTime,
+	),120),'') as LastDeliveryDateTime,
 
 null
 from Patient p
