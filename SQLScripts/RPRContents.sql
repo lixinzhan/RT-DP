@@ -15,10 +15,10 @@ COALESCE(convert(varchar(32),pr.trans_log_tstamp,120),'') as trans_log_tstamp,
 --qs.active_entry_ind,
 q.question_id,
 concat('"',ltrim(rtrim(q.question_txt)),'"') as question_txt,
-ltrim(rtrim(q.question_tag)) as question_tag,
+concat('"',ltrim(rtrim(q.question_tag)),'"') as question_tag,
 concat('"',ltrim(rtrim(pr.resp)),'"') as resp,
 concat('"',ltrim(rtrim(pr.resp_list_txt)),'"') as resp_list_txt,
-COALESCE(ltrim(rtrim(q.score_values)),'') as score_values,
+concat('"',ltrim(rtrim(q.score_values)),'"') as score_values,
 concat('"',ltrim(rtrim(q.string_attr_3)),'"') as string_attr_3
 
 from qstr qs
