@@ -18,7 +18,7 @@ replace(pres.PrescriptionName,',','_') as PrescriptionName,
 pres.Technique as PresTechnique,
 pres.Status as PresStatus,
 pres.CreationUserName,
-pres.CreationDate,
+COALESCE(convert(varchar(32),pres.CreationDate,120),'') as CreationDate,
 --pa.AnatomyName,
 --pa.AnatomyRole,
 --pres.PrescriptionSer

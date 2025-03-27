@@ -8,7 +8,7 @@ select  @v15upgrdate = '20200125'
 
 select distinct
 concat('ID',p.PatientId) as PatientId,
-pt.pt_id,
+cast(pt.pt_id as VARCHAR) as pt_id,
 pt.patient_ser,
 --vn.trans_log_tstamp,
 --vn.trans_log_mtstamp,
@@ -31,11 +31,11 @@ pt.patient_ser,
 --(month(vn.note_tstamp)-1)/3+1 as trans_log_quater,
 ltrim(rtrim(nt.note_typ_desc)) as doc_typ_desc,
 ltrim(rtrim(vn.template_name)) as template_name,
-vn.note_tstamp,
-vn.trans_log_tstamp,
-vn.trans_log_mtstamp,
-vn.appr_tstamp,
-vn.revised_ind,
+COALESCE(convert(varchar(32),vn.note_tstamp,120),'') as note_tstamp,
+COALESCE(convert(varchar(32),vn.trans_log_tstamp,120),'') as trans_log_tstamp,
+COALESCE(convert(varchar(32),vn.trans_log_mtstamp,120),'') as trans_log_mstamp,
+COALESCE(convert(varchar(32),vn.appr_tstamp,120),'') as appr_tstamp,
+COALESCE(vn.revised_ind,'') as revised_ind,
 ( case when vn.visit_note_begin_txt is not null 
             then concat('"',ltrim(rtrim(vn.visit_note_begin_txt)),'"') 
        else '' 
