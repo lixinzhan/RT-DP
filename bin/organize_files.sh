@@ -121,10 +121,28 @@ do
 			grep '(300a,00b2)' ${RTDRTMP}/tfh.dump | grep SH | awk -F "[][{}]" '{print $2,","}' >> ${RTDRTMP}/tfh.xtr # Tx Machine Name
 			grep '(3008,0022)' ${RTDRTMP}/tfh.dump | awk -F "[][{}]" '{print $2,","}' >> ${RTDRTMP}/tfh.xtr # Current Fx num
 			grep '(300a,0078)' ${RTDRTMP}/tfh.dump | awk -F "[][{}]" '{print $2,","}' >> ${RTDRTMP}/tfh.xtr # Planned Fx num
-			grep '(300a,00c4)' ${RTDRTMP}/tfh.dump | awk -F "[][{}]" '{print $2,","}' >> ${RTDRTMP}/tfh.xtr # BeamType
-			grep '(300a,00c2)' ${RTDRTMP}/tfh.dump | awk -F "[][{}]" '{print $2,","}' >> ${RTDRTMP}/tfh.xtr # BeamName
+			# grep '(300a,00c4)' ${RTDRTMP}/tfh.dump | awk -F "[][{}]" '{print $2,","}' >> ${RTDRTMP}/tfh.xtr # BeamType
+			if [ $(grep -ic '(300a,00c4)' ${RTDRTMP}/tfh.dump) -ge 1 ]
+			then
+				grep '(300a,00c4)' ${RTDRTMP}/tfh.dump | awk -F "[][{}]" '{print $2,","}' >> ${RTDRTMP}/tfh.xtr # BeamType
+			else
+				echo "," >> ${RTDRTMP}/tfh.xtr  # when no entry is found, such as brachy records.
+			fi
+			# grep '(300a,00c2)' ${RTDRTMP}/tfh.dump | awk -F "[][{}]" '{print $2,","}' >> ${RTDRTMP}/tfh.xtr # BeamName
+			if [ $(grep -ic '(300a,00c2)' ${RTDRTMP}/tfh.dump) -ge 1 ]
+			then
+				grep '(300a,00c2)' ${RTDRTMP}/tfh.dump | awk -F "[][{}]" '{print $2,","}' >> ${RTDRTMP}/tfh.xtr # BeamName
+			else
+				echo "," >> ${RTDRTMP}/tfh.xtr  # when no entry is found, such as brachy records.
+			fi
 			echo $(basename ${tfhfile}) "," >> ${RTDRTMP}/tfh.xtr
-			grep '(300a,0114)' ${RTDRTMP}/tfh.dump | awk -F "[][{}]" '{print $2,","}' >> ${RTDRTMP}/tfh.xtr # EnergyMode
+			# grep '(300a,0114)' ${RTDRTMP}/tfh.dump | awk -F "[][{}]" '{print $2,","}' >> ${RTDRTMP}/tfh.xtr # EnergyMode
+			if [ $(grep -ic '(300a,0114)' ${RTDRTMP}/tfh.dump) -ge 1 ]
+			then
+				grep '(300a,0114)' ${RTDRTMP}/tfh.dump | awk -F "[][{}]" '{print $2,","}' >> ${RTDRTMP}/tfh.xtr # EnergyMode
+			else
+				echo "," >> ${RTDRTMP}/tfh.xtr  # when no entry is found, such as brachy records.
+			fi
 			grep '(3002,0052)' ${RTDRTMP}/tfh.dump | awk -F "[][{}]" '{print $2    }' >> ${RTDRTMP}/tfh.xtr # FluenceMode; may not exist, hence the last column.
 			
 			# convert output to csv format
