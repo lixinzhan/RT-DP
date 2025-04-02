@@ -26,12 +26,13 @@
 12. Once treatment is done, CBCT should be in the folder having the treatment plan. Treatment records should be in Treatment folder for the corresponding unit.
     
 
-### Linacs Juniper IPs:
+### Linac Juniper IPs:
 
 | Units | HIT | IP |
 | --- | --- | ---|
 | RT6 | Hxx1483 | xxx.xxx.96.91 |
 | RT5 | Hxx1484 | xxx.xxx.96.96 |
+| RT4 | Hxxxxxx | xxx.xxx.96.94 |
 | RT3 | Hxx2992 | xxx.xxx.96.93 |
 | RT2 | Hxx2513 | xxx.xxx.96.90 |
 | RT1 | Hxx2276 | xxx.xxx.96.67 |
