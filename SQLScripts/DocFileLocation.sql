@@ -20,10 +20,14 @@ pt.patient_ser,
 	else vn.doc_file_loc
   end ) as doc_file,
 
-( case	when vn.revised_ind='Y' and datediff(day,@v15upgrdate,vn.trans_log_mtstamp) >= 0 and vn.doc_preview_loc is not null
+-- ( case	when vn.revised_ind='Y' and datediff(day,@v15upgrdate,vn.trans_log_mtstamp) >= 0 and vn.doc_preview_loc is not null
+-- 	    then concat(year(vn.trans_log_mtstamp),'Q',((month(vn.trans_log_mtstamp)-1)/3+1),'\',ltrim(rtrim(vn.doc_preview_loc)))
+-- 	when vn.revised_ind is null and year(vn.trans_log_tstamp) >=2020 and vn.doc_preview_loc is not null
+-- 	    then concat(year(vn.trans_log_tstamp),'Q',((month(vn.trans_log_tstamp)-1)/3+1),'\',ltrim(rtrim(vn.doc_preview_loc)))
+-- 	else vn.doc_preview_loc
+--   end ) as mht_file,
+( case	when datediff(day,@v15upgrdate,vn.trans_log_mtstamp) >= 0 and vn.doc_preview_loc is not null
 	    then concat(year(vn.trans_log_mtstamp),'Q',((month(vn.trans_log_mtstamp)-1)/3+1),'\',ltrim(rtrim(vn.doc_preview_loc)))
-	when vn.revised_ind is null and year(vn.trans_log_tstamp) >=2020 and vn.doc_preview_loc is not null
-	    then concat(year(vn.trans_log_tstamp),'Q',((month(vn.trans_log_tstamp)-1)/3+1),'\',ltrim(rtrim(vn.doc_preview_loc)))
 	else vn.doc_preview_loc
   end ) as mht_file,
 

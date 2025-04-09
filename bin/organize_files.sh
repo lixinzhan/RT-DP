@@ -209,6 +209,8 @@ do
 			awk -F "\\" '{print $1}' | rev | grep -v NULL >> $PTFOLDER/DOC/_file_type.txt
 		awk -F, '{print $4}' $RTDRTMP/ptdocloc.csv | rev | \
 			awk -F "\\" '{print $1}' | rev > $RTDRTMP/ptdocloc.fn
+		awk -F, '{print $5}' $RTDRTMP/ptdocloc.csv | rev | \
+			awk -F "\\" '{print $1}' | rev | grep -v NULL >> $RTDRTMP/ptdocloc.fn
 
 		for docfile in `cat $RTDRTMP/ptdocloc.fn`
 		do 
