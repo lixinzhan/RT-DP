@@ -205,6 +205,8 @@ do
 
 		awk -F, '{printf("%s :  %-32s %s\n", $4, $6, $8);}' $RTDRTMP/ptdocloc.csv | rev | \
 			awk -F "\\" '{print $1}' | rev > $PTFOLDER/DOC/_file_type.txt
+		awk -F, '{printf("%s :  %-32s %s\n", $5, $6, $8);}' $RTDRTMP/ptdocloc.csv | rev | \
+			awk -F "\\" '{print $1}' | rev | grep -v NULL >> $PTFOLDER/DOC/_file_type.txt
 		awk -F, '{print $4}' $RTDRTMP/ptdocloc.csv | rev | \
 			awk -F "\\" '{print $1}' | rev > $RTDRTMP/ptdocloc.fn
 

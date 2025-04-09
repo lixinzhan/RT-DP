@@ -11,6 +11,8 @@ echo
 
 tail -n +3 ${SQLOUTPATH}/DocFileLocation.csv | \
 	awk -F, -v prfx="${FILE_SERVER//\\/\\\\}" '{print prfx $4}' > $SQLOUTPATH/$DOC_LIST_FILE
+tail -n +3 ${SQLOUTPATH}/DocFileLocation.csv | \
+	awk -F, -v prfx="${FILE_SERVER//\\/\\\\}" '{print prfx $5}' | grep -v NULL >> $SQLOUTPATH/$DOC_LIST_FILE
 
 NEWIMAGEDIR1=$(echo $IMAGEDIR1 | sed -r 's/\\/\\\\/g' | sed -r 's/\$/\\\$/g')
 NEWIMAGEDIR2=$(echo $IMAGEDIR2 | sed -r 's/\\/\\\\/g' | sed -r 's/\$/\\\$/g')
