@@ -36,6 +36,11 @@ enable_network 2>&1 | tee -a ${LOGFILE}
 
 # SQL Query ARIA DB
 ./query_db.sh 2>&1 | tee -a ${LOGFILE}
+if [ -s $RTDRTMP/ERROR.SQLCMD ]; then
+	./email_error.sh 2>&1 | tee -a ${LOGFILE}
+	rm -rf $RTDRTMP/ERROR.SQLCMD
+	exit
+fi
 
 # Extract doc/pdf and DCM file locations and send the list to ehelper
 ./send_fileloc.sh 2>&1 | tee -a ${LOGFILE}

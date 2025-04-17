@@ -11,6 +11,9 @@ echo
 # Queries
 ###############################################
 
+echo "select top 10 * from Patient" > ${RTDRTMP}/QueryTest.sql
+sql_exec "${RTDRTMP}/QueryTest.sql" | grep Error > ${RTDRTMP}/ERROR.SQLCMD
+
 sql_exec "${RTDRPATH}/SQLScripts/TreatmentDeliveredLast7Days.sql"
 sql_exec "${RTDRPATH}/SQLScripts/TreatmentScheduledNext7Days.sql"
 sql_exec "${RTDRPATH}/SQLScripts/CTSimLast15Days.sql"
