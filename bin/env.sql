@@ -25,6 +25,7 @@ function sql_exec {
 	local outputfile=$(basename $1)
 	mkdir -p ${SQLOUTPATH}
 	local outputfile="${SQLOUTPATH}/${outputfile%.*}.csv"
+	local errorfile="${SQLOUTPATH}/${outputfile%.*}.err"
 
 	echo
 	#echo $scriptfile
@@ -33,6 +34,8 @@ function sql_exec {
         $SQLCMD -S $DBSVR -d $DB -U $DBUSR -P $DBPWD -C -i $scriptfile -o $outputfile -W -s ","
 	if grep -q "Sqlcmd: Error:" $outputfile; then
 		echo "Sqlcmd Error!!"
+		mv $outputfile $errorfile
+		touch $RTDRTMP/ERROR.SQLCMD
 	else
 		echo "Results saved in $outputfile"
 	fi

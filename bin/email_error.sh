@@ -5,7 +5,7 @@ source ./env.ehelper
 source ./env.email
 
 echo
-echo INFO_TIME: `date '+%Y-%m-%d %H:%M:%S'`  Sending email due to error ...
+echo INFO_TIME: `date '+%Y-%m-%d %H:%M:%S'`  Sending email due to error occurred ...
 echo
 
 BKDATE=`echo $DATESTAMP | awk '{print substr($0,1,4)"-"substr($0,5,2)"-"substr($0,7,2)}'`

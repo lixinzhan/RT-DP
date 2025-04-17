@@ -30,13 +30,13 @@ echo
 #
 #     ** /sbin/ip should be added to /etc/sudoer for executing w/o password **
 #
-enable_network 2>&1 | tee -a ${LOGFILE}
+#enable_network 2>&1 | tee -a ${LOGFILE}
 
 #-------------------------------------------------------------
 
 # SQL Query ARIA DB
 ./query_db.sh 2>&1 | tee -a ${LOGFILE}
-if [ -s $RTDRTMP/ERROR.SQLCMD ]; then
+if [ -f $RTDRTMP/ERROR.SQLCMD ]; then
 	./email_error.sh 2>&1 | tee -a ${LOGFILE}
 	rm -rf $RTDRTMP/ERROR.SQLCMD
 	exit

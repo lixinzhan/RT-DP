@@ -11,9 +11,6 @@ echo
 # Queries
 ###############################################
 
-echo "select top 10 * from Patient" > ${RTDRTMP}/QueryTest.sql
-sql_exec "${RTDRTMP}/QueryTest.sql" | grep Error > ${RTDRTMP}/ERROR.SQLCMD
-
 sql_exec "${RTDRPATH}/SQLScripts/TreatmentDeliveredLast7Days.sql"
 sql_exec "${RTDRPATH}/SQLScripts/TreatmentScheduledNext7Days.sql"
 sql_exec "${RTDRPATH}/SQLScripts/CTSimLast15Days.sql"
@@ -25,6 +22,7 @@ sql_exec "${RTDRPATH}/SQLScripts/RPRLast60Days.sql"
 ###############################################
 
 # Get MRNList for RPR retrieving
+if [ ! -f ${SQLOUTPATH}/RPRLast600Days.csv ]; then exit; fi
 MRNLIST=`tail -n +3 ${SQLOUTPATH}/RPRLast60Days.csv | \
 	awk -F, '$18 !~ /1/' | \
 	awk -F, '{printf("\"%s\", ",$1);}' | \
