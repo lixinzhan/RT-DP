@@ -23,9 +23,10 @@ function sql_exec {
 	# $1 - sql script
 	local scriptfile=$1
 	local outputfile=$(basename $1)
+	local errorfile=$(basename $1)
 	mkdir -p ${SQLOUTPATH}
 	local outputfile="${SQLOUTPATH}/${outputfile%.*}.csv"
-	local errorfile="${SQLOUTPATH}/${outputfile%.*}.err"
+	local errorfile="${SQLOUTPATH}/${errorfile%.*}.err"
 
 	echo
 	#echo $scriptfile
