@@ -22,7 +22,7 @@ sql_exec "${RTDRPATH}/SQLScripts/RPRLast60Days.sql"
 ###############################################
 
 # Get MRNList for RPR retrieving
-if [ ! -f ${SQLOUTPATH}/RPRLast600Days.csv ]; then exit; fi
+if [ ! -f ${SQLOUTPATH}/RPRLast60Days.csv ]; then exit; fi
 MRNLIST=`tail -n +3 ${SQLOUTPATH}/RPRLast60Days.csv | \
 	awk -F, '$18 !~ /1/' | \
 	awk -F, '{printf("\"%s\", ",$1);}' | \

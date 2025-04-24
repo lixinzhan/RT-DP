@@ -30,7 +30,7 @@ echo
 #
 #     ** /sbin/ip should be added to /etc/sudoer for executing w/o password **
 #
-#enable_network 2>&1 | tee -a ${LOGFILE}
+enable_network 2>&1 | tee -a ${LOGFILE}
 
 #-------------------------------------------------------------
 
