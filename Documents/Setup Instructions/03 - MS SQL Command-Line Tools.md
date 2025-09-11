@@ -12,7 +12,7 @@ source ~/.bashrc
 * **Ubuntu**
 ```
 # Import public repo GPG keys
-OSVER=`cat /etc/os-release | grep VERSION_ID | awk -F\" '{print $1}'`
+OSVER=`cat /etc/os-release | grep VERSION_ID | awk -F\" '{print $2}'`
 curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
 curl https://packages.microsoft.com/config/ubuntu/${OSVER}/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
 sudo apt update
