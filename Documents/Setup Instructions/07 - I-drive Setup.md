@@ -76,6 +76,8 @@ _Note: this share is for the case that guest has no account on the computer. It 
 
 ## 2. setup firewall to route vlan 96 and 112
 
+* Configure WAN to a VLAN other than Linac (96) and Servers (112): DHCP for GRRCC
+  
 * Configure LAN1 to the vlan that TrueBeam Juniper is on (vlan 96 for GRRCC)
 
   pfSense --> Interfaces --> LAN
