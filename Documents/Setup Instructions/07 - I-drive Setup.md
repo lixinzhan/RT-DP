@@ -44,6 +44,7 @@ To continue treatment , we need to create an I: drive replacement or faked I: dr
   make change in /etc/samba/smb.conf:
   
   `; interfaces = 127.0.0.0/8 eth0` ==> `interfaces = 127.0.0.0/8 IFACE`
+  
   `; bind interfaces only = yes`  ==> `bind interfaces only = yes`
   
 
