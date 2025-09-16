@@ -83,7 +83,7 @@ sudo apt install gvfs-backends smbclient
 Then in Thunar: 
 
 ```
-smb://smb-server-ip//share
+smb://smb-server-ip/share
 ```
 
 ## 2. setup firewall to route vlan 96 and 112
