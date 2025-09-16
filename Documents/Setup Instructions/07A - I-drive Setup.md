@@ -4,7 +4,7 @@ A pre-requisite for treatment in DICOM RT mode (TrueBeam) is the existence of I:
 DICOM files and later the treatment records. 
 When VSP/OIS is not available, there is a high chance that the network has issues, then I: drive is not available too. 
 
-To continue treatment , we need to create an I: drive replacement or faked I: drive.
+To continue treatment , we need to create an I: drive replacement or faked I: drive. This has been tested working for TrueBeam 2.7.
 
 **Confirm that Therapists, Physicists, Electronics, and Services have the file mode treatment permission**
 
