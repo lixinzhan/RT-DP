@@ -74,6 +74,18 @@ To continue treatment , we need to create an I: drive replacement or faked I: dr
 
 _Note: this share is for the case that guest has no account on the computer. It is NOT secure._
 
+## 1c. Ubuntu access SMB share through Thunar
+
+```
+sudo apt install gvfs-backends smbclient
+```
+
+Then in Thunar: 
+
+```
+smb://smb-server-ip//share
+```
+
 ## 2. setup firewall to route vlan 96 and 112
 
 * Configure WAN to a VLAN other than Linac (96) and Servers (112): DHCP for GRRCC
