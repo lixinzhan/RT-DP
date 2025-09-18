@@ -37,7 +37,7 @@ To continue treatment , we need to create an I: drive replacement or faked I: dr
 
 * find the NIC for share and configure `smb.conf`
   ```
-  ip a    # find the NIC interface
+  ip a    # find the NIC interface: IFACE (such as enp0s25, ens33 etc)
   sudo vi /etc/samba/smb.conf     # edit file
   ```
 
@@ -46,25 +46,30 @@ To continue treatment , we need to create an I: drive replacement or faked I: dr
   `; interfaces = 127.0.0.0/8 eth0` ==> `interfaces = 127.0.0.0/8 IFACE`
   
   `; bind interfaces only = yes`  ==> `bind interfaces only = yes`
-  
 
+  confirm:
+
+  `map to guest = bad user`
+  
 * create a VA_TRANSFER public share at the bottom of `/etc/samba/smb.conf`:
 
   ```
   [VA_TRANSFER]
-  path = /home/VA_TRANSFER
-  public = yes
-  guest only = yes
-  force create mode = 0666
-  force directory mode = 0777
-  browseable = yes
+     path = /home/VA_TRANSFER
+     public = yes
+     guest only = yes
+     force create mode = 0666
+     force directory mode = 0777
+     browseable = yes
+     writeable = yes
+     force user = nobody
   ```
 
 * create the share folder
  
   ```
   sudo mkdir /home/VA_TRANSFER
-  sudo chmod -R ugo+w /home/VA_TRANSFER
+  sudo chown -Rh 65534:65534 /home/VA_TRANSFER
   ```
 
 * restart samba service 
