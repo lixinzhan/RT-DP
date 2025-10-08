@@ -4,7 +4,7 @@ A pre-requisite for treatment in DICOM RT mode (TrueBeam) is the existence of I:
 DICOM files and later the treatment records. 
 When VSP/OIS is not available, there is a high chance that the network has issues, then I: drive is not available too. 
 
-To continue treatment , we need to create an I: drive replacement or faked I: drive.
+To continue treatment , we need to create an I: drive replacement or faked I: drive. This has been tested working for TrueBeam 2.7.
 
 **Confirm that Therapists, Physicists, Electronics, and Services have the file mode treatment permission**
 
@@ -37,33 +37,39 @@ To continue treatment , we need to create an I: drive replacement or faked I: dr
 
 * find the NIC for share and configure `smb.conf`
   ```
-  ip a    # find the NIC interface
+  ip a    # find the NIC interface: IFACE (such as enp0s25, ens33 etc)
   sudo vi /etc/samba/smb.conf     # edit file
   ```
 
   make change in /etc/samba/smb.conf:
   
   `; interfaces = 127.0.0.0/8 eth0` ==> `interfaces = 127.0.0.0/8 IFACE`
-  `; bind interfaces only = yes`  ==> `bind interfaces only = yes`
   
+  `; bind interfaces only = yes`  ==> `bind interfaces only = yes`
 
+  confirm:
+
+  `map to guest = bad user`
+  
 * create a VA_TRANSFER public share at the bottom of `/etc/samba/smb.conf`:
 
   ```
   [VA_TRANSFER]
-  path = /home/VA_TRANSFER
-  public = yes
-  guest only = yes
-  force create mode = 0666
-  force directory mode = 0777
-  browseable = yes
+     path = /home/VA_TRANSFER
+     public = yes
+     guest only = yes
+     force create mode = 0666
+     force directory mode = 0777
+     browseable = yes
+     writeable = yes
+     force user = nobody
   ```
 
 * create the share folder
  
   ```
   sudo mkdir /home/VA_TRANSFER
-  sudo chmod -R ugo+w /home/VA_TRANSFER
+  sudo chown -Rh 65534:65534 /home/VA_TRANSFER
   ```
 
 * restart samba service 
@@ -74,8 +80,22 @@ To continue treatment , we need to create an I: drive replacement or faked I: dr
 
 _Note: this share is for the case that guest has no account on the computer. It is NOT secure._
 
+## 1c. Ubuntu access SMB share through Thunar
+
+```
+sudo apt install gvfs-backends smbclient
+```
+
+Then in Thunar: 
+
+```
+smb://smb-server-ip/share
+```
+
 ## 2. setup firewall to route vlan 96 and 112
 
+* Configure WAN to a VLAN other than Linac (96) and Servers (112): DHCP for GRRCC
+  
 * Configure LAN1 to the vlan that TrueBeam Juniper is on (vlan 96 for GRRCC)
 
   pfSense --> Interfaces --> LAN
