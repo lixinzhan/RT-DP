@@ -166,3 +166,14 @@ _Note:_
 * _a router can be used, such as a pfSense firewall router as configured in step 2._
 * _make sure the network cable from Juniper connect directly to the emergency treatment system_
 
+-------
+
+servers required for file based treatment fot truebeam 4.x
+
+domain controller: must have 
+osp server: must have 
+va_transfer share server: must have
+db server: better to have. otherwise, too many checks and error messages 
+img server: not necessary but may help
+Aria connect, aura servers: not required 
+
