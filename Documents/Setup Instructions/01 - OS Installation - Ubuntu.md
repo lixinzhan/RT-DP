@@ -1,9 +1,9 @@
 <h2>Base OS Installation -- Xubuntu</h2>
 
-* Timezone: Toronto
-* Minimal Install
+* Minimal Install (LTS 22.04+)
 * Currently default partitioning
-* Secure login <Secure>5@LtQ%<Secure>
+* Secure login <Secure>5@LtQ%</Secure>
+* Timezone: Toronto
 * Setup network: `nmtui`, static IP
 
 
