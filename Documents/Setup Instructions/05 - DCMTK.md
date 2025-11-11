@@ -3,7 +3,8 @@
 ### dcmtk installation
 
 ```
-sudo apt install dcmtk
+sudo apt update
+sudo apt install -y dcmtk
 ```
 
 ### generate dcm file from dump for find/query
@@ -106,3 +107,8 @@ is working.
 
   ![image](images/VDCMD%20Service.png)
 
+<h3>Setup Firewall Allowing DICOM Port</h3>
+
+```
+sudo ufw allow from <REMOTE_IP> to any port <LOCAL_PORT>
+```
