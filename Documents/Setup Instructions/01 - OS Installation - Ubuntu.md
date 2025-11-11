@@ -2,7 +2,7 @@
 
 * Minimal Install (LTS 22.04+)
 * Currently default partitioning
-* Secure login <Secure>5@LtQ%</Secure>
+* Secure login
 * Timezone: Toronto
 * Setup network: `nmtui`, static IP
 
