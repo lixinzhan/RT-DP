@@ -30,8 +30,8 @@
 	- _ADMINMAIL_
 	- _OTHERMAIL_
 
-* **base_setup.sh**
-  	- __env.email__ should be set before running this script for setting up automatic email correctly.
+* **base_setup_scripts**
+  	- __env.email__ should be set before running 04_mail.sh for setting up automatic email correctly.
   	  
 * **Aria v15 upgrade date**
 	- Starting from v15, Aria documents storage location has been updated and saved in subfolder yyyyQ#. 
