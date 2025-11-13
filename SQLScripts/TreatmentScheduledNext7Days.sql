@@ -27,7 +27,7 @@ vact.Expression1 as ActivityCode,
 --vac.Expression1 as ActivityCategory,
 (case when sa.ActivityNote is null 
 	then '' 
-	else replace(replace(sa.ActivityNote,char(10),';'),char(13),'') 
+	else replace(replace(sa.ActivityNote,char(10),'; '),char(13),'') 
 end) ActivityNote
 
 from ScheduledActivity sa
