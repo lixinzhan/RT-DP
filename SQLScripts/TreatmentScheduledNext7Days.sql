@@ -25,7 +25,10 @@ sa.WorkFlowActiveFlag,
 vact.Expression1 as ActivityCode,
 --ac.ActivityCategoryCode,
 --vac.Expression1 as ActivityCategory,
-(case when sa.ActivityNote is null then '' else sa.ActivityNote end) ActivityNote
+(case when sa.ActivityNote is null 
+	then '' 
+	else replace(replace(sa.ActivityNote,char(10),';'),char(13),'') 
+end) ActivityNote
 
 from ScheduledActivity sa
 inner join Patient p on p.PatientSer = sa.PatientSer
