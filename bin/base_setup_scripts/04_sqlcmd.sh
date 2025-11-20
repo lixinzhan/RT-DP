@@ -9,6 +9,7 @@ OSVER=`cat /etc/os-release | grep VERSION_ID | awk -F\" '{print $2}'`
 curl -sSL -O https://packages.microsoft.com/config/ubuntu/${OSVER}/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update && sudo apt-get install -y mssql-tools18 unixodbc-dev
+sudo rm -rf packages-microsoft-prod.deb
 
 echo
 echo "*** Remember to add sqlcmd/bcp executible to PATH ***"
