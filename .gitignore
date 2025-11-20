@@ -22,3 +22,4 @@ test/dcmtk/*.dcm
 test/dcmtk/60*
 test/dcmtk/00*
 bin/*.localhost
+bin/output*
