@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 
-FROMMAIL="GRC.RT-DP@grhosp.on.ca"
+FROMMAIL="RTDP.TEST@grhosp.on.ca"
 ADMINMAIL="lixin.zhan@grhosp.on.ca"
 
 echo "Status for service postfix on host $(hostname):" > /tmp/testemail.txt
