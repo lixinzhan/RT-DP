@@ -22,7 +22,7 @@ echo >> ${RTDRTMP}/email.txt
 echo "** If no file listed or file sizes are not reasonable, please check your RT-DP system !!!" >> ${RTDRTMP}/email.txt
 echo "** Files can be accessed on ${EHLP_SERVER%%.*} in folder ${EHLP_DATA} for routine tests." >> ${RTDRTMP}/email.txt
 echo "** Files are available on $(hostname) in folder ${RTDRARXIV} for offline treatment!" >> ${RTDRTMP}/email.txt
-echo "** Offline Tx Steps: ${DOCROOT}${EMTXDOC}" >> ${RTDRTMP}/email.txt
+echo "** See Offline Tx Steps in: ${DOCROOT}" >> ${RTDRTMP}/email.txt
 echo >> ${RTDRTMP}/email.txt
 
 echo "------------------------------------" >> ${RTDRTMP}/email.txt
