@@ -1,1 +1,1 @@
-Authentication Keys, or Username/Password in this folder.
+Encrypted authentication Keys, or Username/Password in this folder.
