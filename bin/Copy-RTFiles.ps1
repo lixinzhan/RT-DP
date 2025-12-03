@@ -16,7 +16,6 @@ if (!(Test-Path $PSTRIGGER))
 # Remove the trigger file to avoid another schedule task starting before the current one stops
 Remove-Item -Path $PSTRIGGER -Recurse -Force
 
-
 $docListFile="doc_file_list.txt"
 $dcmListFile="dcm_path_list.txt"
 $workFolder="D:\RT-DRm-Cache"
@@ -91,3 +90,16 @@ Remove-Item -Path $workFolder\DICOM -Recurse -Force
 Remove-Item -Path $workFolder\$docListFile -Recurse -Force
 Remove-Item -Path $workFolder\$dcmListFile -Recurse -Force
 
+##
+## DB Dump handling here
+##
+## $dbdumpLocFile="dbdump_loc.txt"
+## if exist dbdump_loc.txt then 
+##    remove all prev dbdump folder
+##    create a folder in RTDP-Cache if not exist.
+##    go through the DB name to be copied here.
+##    copy the latest db_dump file to the folder and find out their creation time
+##    copy all transaction log files newer than the db_dump file
+## fi
+## remove dbdump_loc.txt file
+## 

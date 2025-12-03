@@ -29,6 +29,14 @@ tail -n +3 ${SQLOUTPATH}/ImgFileLocation.csv | \
 	 sed -r "s/%%imagedir1/${NEWIMAGEDIR1}/gI" | \
 	 awk -F, '{print $2}' > $SQLOUTPATH/$DCM_LIST_FILE
 
+##
+## DB Dump handling here
+##
+## if BACKUP_DBDUMP, 
+##    create file dbdump_loc.txt, with VA_DBDUMP$ location in it.
+##    scp the file to EHLP_SERVER
+## fi
+
 scp -P $EHLP_SSHPORT $SQLOUTPATH/$DOC_LIST_FILE $EHLP_USER@$EHLP_SERVER:$EHLP_CACHE
 scp -P $EHLP_SSHPORT $SQLOUTPATH/$DCM_LIST_FILE $EHLP_USER@$EHLP_SERVER:$EHLP_CACHE
 scp -P $EHLP_SSHPORT $RTDRPATH/bin/Copy-RTFiles.ps1 $EHLP_USER@$EHLP_SERVER:$EHLP_CACHE
