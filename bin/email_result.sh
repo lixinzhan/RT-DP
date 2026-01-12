@@ -37,7 +37,7 @@ SVRIP=$(ip -br -4 a | grep ${MYNIC} | awk '{print $3}')
 SVRMODEL=$(cat /sys/devices/virtual/dmi/id/product_name)
 echo "------------------------------------" >> ${RTDRTMP}/email.txt
 echo >> ${RTDRTMP}/email.txt
-echo "Server: $SVRNAME $SVRIP($MYNIC) $SVRMODEL" >> ${RTDRTMP}/email.txt
+echo "Server: ${SVRNAME} ${SVRIP}(${MYNIC}) ${SVRMODEL}" >> ${RTDRTMP}/email.txt
 echo >> ${RTDRTMP}/email.txt
 echo "Disk space info for which RT-DP is on: " >> ${RTDRTMP}/email.txt
 echo >> ${RTDRTMP}/email.txt
